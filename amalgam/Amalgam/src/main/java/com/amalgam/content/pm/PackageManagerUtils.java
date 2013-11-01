@@ -40,41 +40,65 @@ public final class PackageManagerUtils {
     }
 
     public static final PackageInfo getSignaturePackageInfo(Context context) throws NameNotFoundException {
-        PackageManager manager = context.getPackageManager();
-        return getSignaturePackageInfo(manager, context.getPackageName());
+        return getSignaturePackageInfo(context, context.getPackageName());
     }
 
-    public static final PackageInfo getSignaturePackageInfo(PackageManager manager, String targetPackage) throws NameNotFoundException {
+    public static final PackageInfo getSignaturePackageInfo(Context context, String targetPackage) throws NameNotFoundException {
+        PackageManager manager = context.getPackageManager();
         return manager.getPackageInfo(targetPackage, PackageManager.GET_SIGNATURES);
     }
 
     public static final PackageInfo getActivityPackageInfo(Context context) throws NameNotFoundException {
+        return getActivityPackageInfo(context, context.getPackageName());
+    }
+
+    public static final PackageInfo getActivityPackageInfo(Context context, String targetPackage) throws NameNotFoundException {
         PackageManager manager = context.getPackageManager();
-        return manager.getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES);
+        return manager.getPackageInfo(targetPackage, PackageManager.GET_ACTIVITIES);
     }
 
     public static final PackageInfo getIntentFilterPackageInfo(Context context) throws NameNotFoundException {
+        return getIntentFilterPackageInfo(context, context.getPackageName());
+    }
+
+    public static final PackageInfo getIntentFilterPackageInfo(Context context, String targetPackage) throws NameNotFoundException {
         PackageManager manager = context.getPackageManager();
-        return manager.getPackageInfo(context.getPackageName(), PackageManager.GET_INTENT_FILTERS);
+        return manager.getPackageInfo(targetPackage, PackageManager.GET_INTENT_FILTERS);
     }
 
     public static final PackageInfo getServicePackageInfo(Context context) throws NameNotFoundException {
+        return getServicePackageInfo(context, context.getPackageName());
+    }
+
+    public static final PackageInfo getServicePackageInfo(Context context, String targetPackage) throws NameNotFoundException {
         PackageManager manager = context.getPackageManager();
-        return manager.getPackageInfo(context.getPackageName(), PackageManager.GET_SERVICES);
+        return manager.getPackageInfo(targetPackage, PackageManager.GET_SERVICES);
     }
 
     public static final PackageInfo getProviderPackageInfo(Context context) throws NameNotFoundException {
+        return getProviderPackageInfo(context, context.getPackageName());
+    }
+
+    public static final PackageInfo getProviderPackageInfo(Context context, String targetPackage) throws NameNotFoundException {
         PackageManager manager = context.getPackageManager();
-        return manager.getPackageInfo(context.getPackageName(), PackageManager.GET_PROVIDERS);
+        return manager.getPackageInfo(targetPackage, PackageManager.GET_PROVIDERS);
     }
 
     public static final PackageInfo getPermissionPackageInfo(Context context) throws NameNotFoundException {
+        return getPermissionPackageInfo(context, context.getPackageName());
+    }
+
+    public static final PackageInfo getPermissionPackageInfo(Context context, String targetPackage) throws NameNotFoundException {
         PackageManager manager = context.getPackageManager();
-        return manager.getPackageInfo(context.getPackageName(), PackageManager.GET_PERMISSIONS);
+        return manager.getPackageInfo(targetPackage, PackageManager.GET_PERMISSIONS);
     }
 
     public static final PackageInfo getReceiverPackageInfo(Context context) throws NameNotFoundException {
+        return getReceiverPackageInfo(context, context.getPackageName());
+    }
+
+    public static final PackageInfo getReceiverPackageInfo(Context context, String targetPackage) throws NameNotFoundException {
         PackageManager manager = context.getPackageManager();
-        return manager.getPackageInfo(context.getPackageName(), PackageManager.GET_RECEIVERS);
+        return manager.getPackageInfo(targetPackage, PackageManager.GET_RECEIVERS);
     }
 }
