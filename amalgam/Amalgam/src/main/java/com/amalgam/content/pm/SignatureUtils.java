@@ -40,7 +40,7 @@ public final class SignatureUtils {
             return null;
         }
         try {
-            PackageInfo info = PackageManagerUtils.getSignaturePackageInfo(context.getPackageManager(), targetPackageName);
+            PackageInfo info = PackageManagerUtils.getSignaturePackageInfo(context, targetPackageName);
             if (info.signatures.length != 1) {
                 // multiple signature would not treated
                 return null;
