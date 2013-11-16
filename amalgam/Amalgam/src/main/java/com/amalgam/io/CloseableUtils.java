@@ -11,6 +11,11 @@ public final class CloseableUtils {
     private static final String TAG = CloseableUtils.class.getSimpleName();
     private CloseableUtils() {}
 
+    /**
+     * Close closeable like i/o streams quietly.
+     * Do NOT close {@link android.database.Cursor} with this method, or will cause crashing on some device.
+     * @param closeable
+     */
     public static final void close(Closeable closeable) {
         if (closeable == null) {
             return;
