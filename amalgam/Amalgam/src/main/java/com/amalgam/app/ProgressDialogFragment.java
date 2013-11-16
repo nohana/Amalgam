@@ -13,6 +13,7 @@ import com.amalgam.os.BundleUtils;
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public final class ProgressDialogFragment extends DialogFragment {
+    public static final String TAG = ProgressDialogFragment.class.getSimpleName();
     private static final String ARGS_TITLE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_TITLE");
     private static final String ARGS_MESSAGE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_MESSAGE");
     private static final String ARGS_INDETERMINATE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_INDETERMINATE");

@@ -10,6 +10,7 @@ import com.amalgam.os.BundleUtils;
 /**
  */
 public final class SupportProgressDialogFragment extends DialogFragment {
+    public static final String TAG = SupportProgressDialogFragment.class.getSimpleName();
     private static final String ARGS_TITLE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_TITLE");
     private static final String ARGS_MESSAGE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_MESSAGE");
     private static final String ARGS_INDETERMINATE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_INDETERMINATE");
