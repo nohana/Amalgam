@@ -18,6 +18,15 @@ android {
 }
 ```
 
+## Requirements
+
+Supports Android 2.1 or greater.
+
+## Contributing
+
+Any contributions, bug fixes, unit/integration tests are welcomed and
+appreciated. Please fork this repository and send pull requests to contribute.
+
 ## License
 
 ```
