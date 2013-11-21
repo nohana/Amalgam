@@ -18,7 +18,9 @@ public final class DialogFragmentUtils {
             @Override
             public void run() {
                 DialogFragment fragment = (DialogFragment) manager.findFragmentByTag(tag);
-                fragment.dismiss();
+                if (fragment != null) {
+                    fragment.dismiss();
+                }
             }
         });
     }
