@@ -39,4 +39,5 @@ before_script:
   - ./wait_for_emulator.sh
   - adb shell input keyevent 82 &
 script:
-  - TERM=dumb ./amalgam/gradlew build
+  - cd amalgam
+  - TERM=dumb ./gradlew build
