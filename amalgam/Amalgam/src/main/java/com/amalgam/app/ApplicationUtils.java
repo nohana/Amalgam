@@ -16,14 +16,22 @@
 package com.amalgam.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 /**
  * Utility for application object.
  */
 public final class ApplicationUtils {
+    private static final String[] INTERNAL_PATH = new String[] { "/data", "/system" };
+
     private ApplicationUtils() {}
 
+    public static final boolean isDebuggable(Context context) {
+        return isDebuggable((Application) context.getApplicationContext());
+    }
     /**
      * Checks if the application is running as debug mode or not.
      * @param app the application to check
@@ -32,5 +40,25 @@ public final class ApplicationUtils {
     public static final boolean isDebuggable(Application app) {
         ApplicationInfo info = app.getApplicationInfo();
         return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+    }
+
+    public static boolean isInstalledOnSDCard(Context context) {
+        return isInstalledOnSDCard((Application) context.getApplicationContext());
+    }
+
+    public static final boolean isInstalledOnSDCard(Application app) {
+        try {
+            String packageName = app.getPackageName();
+            PackageInfo info = app.getPackageManager().getPackageInfo(packageName, 0);
+            String dir = info.applicationInfo.sourceDir;
+
+            for (String path : INTERNAL_PATH) {
+                if (path.equals(dir.substring(0, path.length())))
+                    return false;
+            }
+        } catch (PackageManager.NameNotFoundException exp) {
+            throw new IllegalArgumentException(exp);
+        }
+        return true;
     }
 }
