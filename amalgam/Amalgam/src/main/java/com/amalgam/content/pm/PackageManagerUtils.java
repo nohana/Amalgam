@@ -16,6 +16,7 @@
 package com.amalgam.content.pm;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -54,6 +55,13 @@ public final class PackageManagerUtils {
         } catch (NameNotFoundException e) {
             throw new IllegalStateException("no such package installed on the device: ", e);
         }
+    }
+
+    public static final boolean isPackageInstalled(Context context, String targetPackage) {
+        PackageManager manager = context.getPackageManager();
+        Intent intent = new Intent();
+        intent.setPackage(targetPackage);
+        return manager.resolveActivity(intent, 0) != null;
     }
 
     public static final PackageInfo getSignaturePackageInfo(Context context) throws NameNotFoundException {
