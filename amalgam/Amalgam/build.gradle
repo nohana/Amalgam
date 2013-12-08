@@ -40,7 +40,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repos.absolutePath}"
-            pom.version = '0.2.3'
+            pom.version = '0.2.4'
             pom.groupId = 'com.amalgam'
             pom.artifactId = 'Amalgam'
         }
