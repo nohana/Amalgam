@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
+        classpath 'com.android.tools.build:gradle:0.7.+'
     }
 }
 apply plugin: 'android-library'
@@ -40,7 +40,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repos.absolutePath}"
-            pom.version = '0.2.4'
+            pom.version = '0.3.0'
             pom.groupId = 'com.amalgam'
             pom.artifactId = 'Amalgam'
         }

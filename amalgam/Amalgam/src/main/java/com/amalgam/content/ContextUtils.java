@@ -25,7 +25,6 @@ import android.app.KeyguardManager;
 import android.app.NotificationManager;
 import android.app.SearchManager;
 import android.app.UiModeManager;
-import android.app.WallpaperManager;
 import android.app.admin.DevicePolicyManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ClipboardManager;
@@ -49,6 +48,7 @@ import android.os.PowerManager;
 import android.os.UserManager;
 import android.os.Vibrator;
 import android.os.storage.StorageManager;
+import android.service.wallpaper.WallpaperService;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
@@ -58,8 +58,7 @@ import android.view.textservice.TextServicesManager;
 
 import java.io.File;
 
-/**
- */
+@SuppressWarnings("unused") // Public APIs
 public final class ContextUtils {
     private ContextUtils() {}
 
@@ -132,6 +131,7 @@ public final class ContextUtils {
         return (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static final InputManager getInputManager(Context context) {
         return (InputManager) context.getSystemService(Context.INPUT_SERVICE);
     }
@@ -152,6 +152,7 @@ public final class ContextUtils {
         return (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD_MR1)
     public static final NfcManager getNfcManager(Context context) {
         return (NfcManager) context.getSystemService(Context.NFC_SERVICE);
     }
@@ -164,6 +165,7 @@ public final class ContextUtils {
         return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static final BluetoothAdapter getBluetoothAdapter(Context context) {
         return (BluetoothAdapter) context.getSystemService(Context.BLUETOOTH_SERVICE);
     }
@@ -172,18 +174,22 @@ public final class ContextUtils {
         return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final DevicePolicyManager getDevicePolicyManager(Context context) {
         return (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static final DisplayManager getDisplayManager(Context context) {
         return (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final DownloadManager getDownloadManager(Context context) {
         return (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final DropBoxManager getDropBoxManager(Context context) {
         return (DropBoxManager) context.getSystemService(Context.DROPBOX_SERVICE);
     }
@@ -196,10 +202,12 @@ public final class ContextUtils {
         return (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static final MediaRouter getMediaRouter(Context context) {
         return (MediaRouter) context.getSystemService(Context.MEDIA_ROUTER_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static final NsdManager getNsdManager(Context context) {
         return (NsdManager) context.getSystemService(Context.NSD_SERVICE);
     }
@@ -212,6 +220,7 @@ public final class ContextUtils {
         return (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final StorageManager getStorageManager(Context context) {
         return (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
     }
@@ -220,18 +229,22 @@ public final class ContextUtils {
         return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public static final TextServicesManager getTextServicesManager(Context context) {
         return (TextServicesManager) context.getSystemService(Context.TEXT_SERVICES_MANAGER_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final UiModeManager getUiModeManager(Context context) {
         return (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
     public static final UsbManager getUsbManager(Context context) {
         return (UsbManager) context.getSystemService(Context.USB_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static final UserManager getUserManager(Context context) {
         return (UserManager) context.getSystemService(Context.USER_SERVICE);
     }
@@ -240,10 +253,11 @@ public final class ContextUtils {
         return (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
-    public static final WallpaperManager getWallpaperManager(Context context) {
-        return (WallpaperManager) context.getSystemService(Context.WALLPAPER_SERVICE);
+    public static final WallpaperService getWallpaperManager(Context context) {
+        return (WallpaperService) context.getSystemService(Context.WALLPAPER_SERVICE);
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public static final WifiP2pManager getWifiP2pManager(Context context) {
         return (WifiP2pManager) context.getSystemService(Context.WIFI_P2P_SERVICE);
     }
