@@ -15,11 +15,13 @@
  */
 package com.amalgam.content.pm;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
 import android.util.Log;
 
 import com.amalgam.R;
@@ -131,6 +133,7 @@ public final class PackageManagerUtils {
         return hasAppWidgetFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static final boolean hasAppWidgetFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_APP_WIDGETS);
     }
@@ -139,6 +142,7 @@ public final class PackageManagerUtils {
         return hasLowLatencyAudioFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasLowLatencyAudioFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_AUDIO_LOW_LATENCY);
     }
@@ -147,6 +151,7 @@ public final class PackageManagerUtils {
         return hasBluetoothFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasBluetoothFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH);
     }
@@ -155,6 +160,7 @@ public final class PackageManagerUtils {
         return hasBluetoothLEFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static final boolean hasBluetoothLEFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
     }
@@ -171,6 +177,7 @@ public final class PackageManagerUtils {
         return hasCameraFeatureAtLeastOne(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     public static final boolean hasCameraFeatureAtLeastOne(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }
@@ -195,6 +202,7 @@ public final class PackageManagerUtils {
         return hasFrontCameraFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasFrontCameraFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
     }
@@ -203,6 +211,7 @@ public final class PackageManagerUtils {
         return hasConsumerIrFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static final boolean hasConsumerIrFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_CONSUMER_IR);
     }
@@ -211,6 +220,7 @@ public final class PackageManagerUtils {
         return hasDeviceAdminFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static final boolean hasDeviceAdminFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_DEVICE_ADMIN);
     }
@@ -219,6 +229,7 @@ public final class PackageManagerUtils {
         return hasFakeTouchFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static final boolean hasFakeTouchFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_FAKETOUCH);
     }
@@ -227,6 +238,7 @@ public final class PackageManagerUtils {
         return hasDistinctMultiFakeTouchFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public static final boolean hasDistinctMultiFakeTouchFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_FAKETOUCH_MULTITOUCH_DISTINCT);
     }
@@ -235,6 +247,7 @@ public final class PackageManagerUtils {
         return hasJazzhandMultiFakeTouchFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public static final boolean hasJazzhandMultiFakeTouchFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_FAKETOUCH_MULTITOUCH_JAZZHAND);
     }
@@ -243,6 +256,7 @@ public final class PackageManagerUtils {
         return hasHomeScreenFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static final boolean hasHomeScreenFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_HOME_SCREEN);
     }
@@ -251,6 +265,7 @@ public final class PackageManagerUtils {
         return hasInputMethodsFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     public static final boolean hasInputMethodsFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_INPUT_METHODS);
     }
@@ -267,6 +282,7 @@ public final class PackageManagerUtils {
         return hasLocationFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasLocationFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_LOCATION);
     }
@@ -275,6 +291,7 @@ public final class PackageManagerUtils {
         return hasGpsLocationFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasGpsLocationFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
     }
@@ -283,6 +300,7 @@ public final class PackageManagerUtils {
         return hasNetworkLocationFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasNetworkLocationFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_LOCATION_NETWORK);
     }
@@ -291,6 +309,7 @@ public final class PackageManagerUtils {
         return hasMicrophoneFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasMicrophoneFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_MICROPHONE);
     }
@@ -299,6 +318,7 @@ public final class PackageManagerUtils {
         return hasNfcFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasNfcFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_NFC);
     }
@@ -307,6 +327,7 @@ public final class PackageManagerUtils {
         return hasHostCardEmulationNfcFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     public static final boolean hasHostCardEmulationNfcFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_NFC_HOST_CARD_EMULATION);
     }
@@ -315,6 +336,7 @@ public final class PackageManagerUtils {
         return hasLandscapeScreenFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public static final boolean hasLandscapeScreenFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SCREEN_LANDSCAPE);
     }
@@ -323,6 +345,7 @@ public final class PackageManagerUtils {
         return hasPortraitScreenFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public static final boolean hasPortraitScreenFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SCREEN_PORTRAIT);
     }
@@ -331,6 +354,7 @@ public final class PackageManagerUtils {
         return hasAccelerometerSensorFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasAccelerometerSensorFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SENSOR_ACCELEROMETER);
     }
@@ -339,6 +363,7 @@ public final class PackageManagerUtils {
         return hasBarometerSensorFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasBarometerSensorFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SENSOR_BAROMETER);
     }
@@ -347,6 +372,7 @@ public final class PackageManagerUtils {
         return hasCompassSensorFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasCompassSensorFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SENSOR_COMPASS);
     }
@@ -355,6 +381,7 @@ public final class PackageManagerUtils {
         return hasGyroscopeSensorFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasGyroscopeSensorFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SENSOR_GYROSCOPE);
     }
@@ -395,6 +422,7 @@ public final class PackageManagerUtils {
         return hasSipFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasSipFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SIP);
     }
@@ -403,6 +431,7 @@ public final class PackageManagerUtils {
         return hasSipVoipFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasSipVoipFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_SIP_VOIP);
     }
@@ -435,6 +464,7 @@ public final class PackageManagerUtils {
         return hasTelevisionFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static final boolean hasTelevisionFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_TELEVISION);
     }
@@ -443,6 +473,7 @@ public final class PackageManagerUtils {
         return hasTouchScreenFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasTouchScreenFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN);
     }
@@ -459,6 +490,7 @@ public final class PackageManagerUtils {
         return hasDistinctMultiTouchScreenFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasDistinctMultiTouchScreenFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT);
     }
@@ -467,6 +499,7 @@ public final class PackageManagerUtils {
         return hasJazzhandMultiTouchScreenFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public static final boolean hasJazzhandMultiTouchScreenFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN_MULTITOUCH_JAZZHAND);
     }
@@ -475,6 +508,7 @@ public final class PackageManagerUtils {
         return hasUsbAccessoryFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
     public static final boolean hasUsbAccessoryFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_USB_ACCESSORY);
     }
@@ -483,6 +517,7 @@ public final class PackageManagerUtils {
         return hasUsbHostFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
     public static final boolean hasUsbHostFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_USB_HOST);
     }
@@ -491,6 +526,7 @@ public final class PackageManagerUtils {
         return hasWifiFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final boolean hasWifiFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_WIFI);
     }
@@ -499,6 +535,7 @@ public final class PackageManagerUtils {
         return hasWifiDirectFeature(context.getPackageManager());
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public static final boolean hasWifiDirectFeature(PackageManager manager) {
         return manager.hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
     }

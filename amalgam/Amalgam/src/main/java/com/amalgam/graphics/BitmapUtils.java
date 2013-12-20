@@ -15,9 +15,11 @@
  */
 package com.amalgam.graphics;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -29,11 +31,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- */
+@SuppressWarnings("unused") // Public APIs
 public final class BitmapUtils {
     public static final String TAG = BitmapUtils.class.getSimpleName();
 
@@ -79,6 +79,7 @@ public final class BitmapUtils {
         return Bitmap.createBitmap(bitmap, 0, 0, (int) (scale * bitmap.getWidth()), (int) (scale * bitmap.getHeight()), matrix, true);
     }
 
+    @TargetApi(Build.VERSION_CODES.FROYO)
     public static final File storeOnExternalStorage(Context context, Bitmap bitmap, String type, String path, String filename, Bitmap.CompressFormat format, int quality) {
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             // we cannot save a bitmap on the external storage on media not mounted.
