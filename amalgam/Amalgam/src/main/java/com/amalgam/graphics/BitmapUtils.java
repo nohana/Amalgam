@@ -16,9 +16,14 @@
 package com.amalgam.graphics;
 
 import android.annotation.TargetApi;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.Point;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
@@ -31,6 +36,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 @SuppressWarnings("unused") // Public APIs
@@ -39,14 +45,71 @@ public final class BitmapUtils {
 
     private BitmapUtils() {}
 
-    public static final void recycle(Bitmap bitmap) {
+    public static void recycle(Bitmap bitmap) {
         if (bitmap == null || bitmap.isRecycled()) {
             return;
         }
         bitmap.recycle();
     }
 
-    public static final byte[] toByteArray(Bitmap bitmap, Bitmap.CompressFormat format, int quality) {
+    public static Point getSize(ContentResolver resolver, Uri uri) {
+        InputStream is = null;
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            is = resolver.openInputStream(uri);
+            BitmapFactory.decodeStream(is, null, options);
+            int width = options.outWidth;
+            int height = options.outHeight;
+            return new Point(width, height);
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, "target file (" + uri + ") does not exist.", e);
+            return null;
+        } finally {
+            CloseableUtils.close(is);
+        }
+    }
+
+    public static Point getSize(File path) {
+        return getSize(path.getAbsolutePath());
+    }
+
+    public static Point getSize(String path) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(path, options);
+        int width = options.outWidth;
+        int height = options.outHeight;
+        return new Point(width, height);
+    }
+
+    public static Point getSize(byte[] byteArray) {
+        return getSize(byteArray, 0, byteArray.length);
+    }
+
+    public static Point getSize(byte[] byteArray, int offset, int length) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(byteArray, offset, length, options);
+        int width = options.outWidth;
+        int height = options.outHeight;
+        return new Point(width, height);
+    }
+
+    public static Point getSize(Context context, int resId) {
+        return getSize(context.getResources(), resId);
+    }
+
+    public static Point getSize(Resources res, int resId) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        int width = options.outWidth;
+        int height = options.outHeight;
+        return new Point(width, height);
+    }
+
+    public static byte[] toByteArray(Bitmap bitmap, Bitmap.CompressFormat format, int quality) {
         ByteArrayOutputStream out = null;
         try {
             out = new ByteArrayOutputStream();
@@ -57,7 +120,7 @@ public final class BitmapUtils {
         }
     }
 
-    public static final Bitmap shrink(Bitmap bitmap, float scale) {
+    public static Bitmap shrink(Bitmap bitmap, float scale) {
         if (scale >= 1.0f) {
             return bitmap.copy(bitmap.getConfig(), false);
         }
@@ -68,7 +131,7 @@ public final class BitmapUtils {
         return Bitmap.createBitmap(bitmap, 0, 0, (int) (scale * bitmap.getWidth()), (int) (scale * bitmap.getHeight()), matrix, true);
     }
 
-    public static final Bitmap expand(Bitmap bitmap, float scale) {
+    public static Bitmap expand(Bitmap bitmap, float scale) {
         if (scale <= 1.0f) {
             return bitmap.copy(bitmap.getConfig(), false);
         }
@@ -80,7 +143,7 @@ public final class BitmapUtils {
     }
 
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File storeOnExternalStorage(Context context, Bitmap bitmap, String type, String path, String filename, Bitmap.CompressFormat format, int quality) {
+    public static File storeOnExternalStorage(Context context, Bitmap bitmap, String type, String path, String filename, Bitmap.CompressFormat format, int quality) {
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             // we cannot save a bitmap on the external storage on media not mounted.
             return null;
@@ -94,7 +157,7 @@ public final class BitmapUtils {
         return file;
     }
 
-    public static final File storeOnCacheDir(Context context, Bitmap bitmap, String path, String filename, Bitmap.CompressFormat format, int quality) {
+    public static File storeOnCacheDir(Context context, Bitmap bitmap, String path, String filename, Bitmap.CompressFormat format, int quality) {
         File dir = new File(context.getCacheDir(), path);
         FileUtils.makeDirsIfNeeded(dir);
         File file = new File(dir, filename);
@@ -104,7 +167,7 @@ public final class BitmapUtils {
         return file;
     }
 
-    public static final boolean storeOnApplicationPrivateDir(Context context, Bitmap bitmap, String filename, Bitmap.CompressFormat format, int quality) {
+    public static boolean storeOnApplicationPrivateDir(Context context, Bitmap bitmap, String filename, Bitmap.CompressFormat format, int quality) {
         OutputStream out = null;
         try {
             out = new BufferedOutputStream(context.openFileOutput(filename, Context.MODE_PRIVATE));
@@ -117,7 +180,7 @@ public final class BitmapUtils {
         }
     }
 
-    public static final boolean storeAsFile(Bitmap bitmap, File file, Bitmap.CompressFormat format, int quality) {
+    public static boolean storeAsFile(Bitmap bitmap, File file, Bitmap.CompressFormat format, int quality) {
         OutputStream out = null;
         try {
             out = new BufferedOutputStream(new FileOutputStream(file));
