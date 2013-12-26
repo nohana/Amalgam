@@ -29,6 +29,10 @@ public final class ApplicationUtils {
 
     private ApplicationUtils() {}
 
+    public static final Application getApplication(Context context) {
+        return (Application) context.getApplicationContext();
+    }
+
     public static final boolean isDebuggable(Context context) {
         return isDebuggable((Application) context.getApplicationContext());
     }
