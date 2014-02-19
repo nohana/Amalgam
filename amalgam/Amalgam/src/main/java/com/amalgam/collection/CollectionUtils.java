@@ -17,6 +17,7 @@ package com.amalgam.collection;
 
 import java.util.Collection;
 
+@SuppressWarnings("unused") // public APIs
 public final class CollectionUtils {
     private CollectionUtils() { }
 
@@ -47,7 +48,7 @@ public final class CollectionUtils {
      * @return the last entry index.
      */
     public static int getLastIndex(final Collection<?> collection) {
-        if (isEmptry(collection)) {
+        if (isEmpty(collection)) {
             return 0;
         }
         return collection.size() - 1;

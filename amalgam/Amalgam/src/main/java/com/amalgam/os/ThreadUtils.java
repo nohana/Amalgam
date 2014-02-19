@@ -15,14 +15,15 @@
  */
 package com.amalgam.os;
 
-import android.os.Looper;
-
 import com.amalgam.os.exception.CalledFromWrongThreadException;
+
+import android.os.Looper;
 
 /**
  *
  * @author keishin.yokomaku
  */
+@SuppressWarnings("unused") // public APIs
 public final class ThreadUtils {
     private ThreadUtils() {}
 
@@ -46,7 +47,7 @@ public final class ThreadUtils {
     /**
      * Validate the specified thread is main thread, or throws {@link CalledFromWrongThreadException}.
      * Useful to make sure the modification of the UI components is done on main thread.
-     * @param thread
+     * @param thread to check if the main or not.
      */
     public static void checkMainThread(Thread thread) {
         if (!isMainThread(thread))
@@ -56,7 +57,7 @@ public final class ThreadUtils {
     /**
      * Validate the specified thread is NOT main thread, or throws {@link CalledFromWrongThreadException}.
      * Useful to make sure the blocking procedure is done on background(worker) thread.
-     * @param thread
+     * @param thread to check if not the main.
      */
     public static void checkNotMainThread(Thread thread) {
         if (isMainThread(thread))

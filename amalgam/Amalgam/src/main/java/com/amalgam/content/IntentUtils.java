@@ -17,6 +17,7 @@ package com.amalgam.content;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class IntentUtils {
     private IntentUtils() {}
 

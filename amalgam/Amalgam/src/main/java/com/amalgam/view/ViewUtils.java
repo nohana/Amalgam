@@ -15,14 +15,14 @@
  */
 package com.amalgam.view;
 
+import com.amalgam.content.ContextUtils;
+
 import android.content.Context;
 import android.content.res.Resources;
-import android.hardware.display.DisplayManager;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-import com.amalgam.content.ContextUtils;
-
+@SuppressWarnings("unused") // public APIs
 public final class ViewUtils {
     private ViewUtils() {}
 

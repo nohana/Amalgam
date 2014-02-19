@@ -15,13 +15,12 @@
  */
 package com.amalgam.security;
 
-import android.util.Log;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class MessageDigestUtils {
     public static final String TAG = MessageDigestUtils.class.getSimpleName();
     public static final String ALGORITHM_SHA_256 = "SHA-256";

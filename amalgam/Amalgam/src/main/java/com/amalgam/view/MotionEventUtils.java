@@ -21,6 +21,7 @@ import android.view.MotionEvent;
  * Utility for the motion event treatment.
  * @author keishin.yokomaku
  */
+@SuppressWarnings("unused") // public APIs
 public final class MotionEventUtils {
     private static final float DEFAULT_THRESHOLD = 0.0f;
 

@@ -22,6 +22,7 @@ import java.io.IOException;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class CloseableUtils {
     private static final String TAG = CloseableUtils.class.getSimpleName();
     private CloseableUtils() {}

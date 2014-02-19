@@ -19,6 +19,7 @@ import android.widget.ListView;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class ListViewUtils {
     private ListViewUtils() {}
 

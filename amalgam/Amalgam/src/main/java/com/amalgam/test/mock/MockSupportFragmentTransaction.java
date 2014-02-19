@@ -24,6 +24,7 @@ import android.support.v4.app.FragmentTransaction;
  * All of the method call will throw {@link UnsupportedOperationException}.
  * @author keishin.yokomaku
  */
+@SuppressWarnings("unused") // public APIs
 public class MockSupportFragmentTransaction extends FragmentTransaction {
     @Override
     public FragmentTransaction add(Fragment fragment, String tag) {

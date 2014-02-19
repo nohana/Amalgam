@@ -25,6 +25,7 @@ import java.io.InputStream;
  * @author KeithYokoma
  *
  */
+@SuppressWarnings("unused") // public APIs
 public class DebugInputStream extends InputStream {
     public static final String TAG = DebugInputStream.class.getSimpleName();
     private InputStream mStream;

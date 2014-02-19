@@ -22,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 
+@SuppressWarnings("unused") // public APIs
 public final class FileUtils {
     private FileUtils() {}
 

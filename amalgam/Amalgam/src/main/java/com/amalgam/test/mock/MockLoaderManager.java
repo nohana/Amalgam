@@ -30,6 +30,7 @@ import java.io.PrintWriter;
  * @author keishin.yokomaku
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressWarnings("unused") // public APIs
 public class MockLoaderManager extends LoaderManager {
     @Override
     public void destroyLoader(int id) {

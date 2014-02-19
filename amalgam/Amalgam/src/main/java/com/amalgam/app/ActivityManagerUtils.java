@@ -27,6 +27,7 @@ import java.util.List;
  * Utility for activity manager.
  * @author KeithYokoma
  */
+@SuppressWarnings("unused") // public APIs
 public final class ActivityManagerUtils {
     /**
      * Do NOT instantiate this class.

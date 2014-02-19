@@ -33,6 +33,7 @@ import android.os.Bundle;
  * @author keishin.yokomaku
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressWarnings("unused") // public APIs
 public class SimpleAlertDialogFragment extends DialogFragment {
     public static final String TAG = SimpleAlertDialogFragment.class.getSimpleName();
     private static final String ARGS_MESSAGE_RES = BundleUtils.buildKey(SimpleAlertDialogFragment.class, "ARGS_MESSAGE_RES");

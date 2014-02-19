@@ -15,6 +15,8 @@
  */
 package com.amalgam.app;
 
+import com.amalgam.os.BundleUtils;
+
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -22,11 +24,10 @@ import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.amalgam.os.BundleUtils;
-
 /**
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressWarnings("unused") // public APIs
 public final class ProgressDialogFragment extends DialogFragment {
     public static final String TAG = ProgressDialogFragment.class.getSimpleName();
     private static final String ARGS_TITLE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_TITLE");

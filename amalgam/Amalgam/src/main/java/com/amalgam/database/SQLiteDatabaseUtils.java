@@ -19,6 +19,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class SQLiteDatabaseUtils {
     private  SQLiteDatabaseUtils() {}
 

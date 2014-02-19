@@ -1,5 +1,8 @@
 package com.amalgam.widget;
 
+import com.amalgam.R;
+import com.amalgam.view.ViewUtils;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -8,13 +11,10 @@ import android.view.Gravity;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.amalgam.R;
-import com.amalgam.view.ViewUtils;
-
+@SuppressWarnings("unused") // public APIs
 public class IconCenterizedRadioButton extends CompoundRelativeLayout {
     private static final int DEFAULT_TEXT_SIZE = 15;
 
-    @SuppressWarnings("unused") // Public API
     public IconCenterizedRadioButton(Context context) {
         this(context, null);
     }

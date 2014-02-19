@@ -32,6 +32,7 @@ import java.io.PrintWriter;
  * @author keishin.yokomaku
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressWarnings("unused") // public APIs
 public class MockFragmentManager extends FragmentManager {
     @Override
     public void addOnBackStackChangedListener(OnBackStackChangedListener listener) {

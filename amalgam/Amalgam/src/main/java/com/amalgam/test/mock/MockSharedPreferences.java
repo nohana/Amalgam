@@ -25,6 +25,7 @@ import java.util.Set;
  * All of the method call will throw {@link UnsupportedOperationException}.
  * @author keishin.yokomaku
  */
+@SuppressWarnings("unused") // public APIs
 public class MockSharedPreferences implements SharedPreferences {
     @Override
     public boolean contains(String key) {

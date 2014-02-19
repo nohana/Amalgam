@@ -16,12 +16,13 @@
 package com.amalgam.lang;
 
 /**
- * Created by keishin.yokomaku on 2013/11/01.
+ *
  */
+@SuppressWarnings("unused") // public APIs
 public final class StringUtils {
     private StringUtils() {}
 
-    public static final String byteToHex(byte[] data) {
+    public static String byteToHex(byte[] data) {
         if (data == null) {
             return null;
         }

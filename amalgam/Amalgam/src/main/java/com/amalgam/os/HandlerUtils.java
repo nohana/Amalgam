@@ -18,10 +18,19 @@ package com.amalgam.os;
 import android.os.Handler;
 import android.os.Looper;
 
+@SuppressWarnings("unused") // public APIs
 public final class HandlerUtils {
     private HandlerUtils() {}
 
-    public static final Handler getMainHandler() {
+    public static Handler getMainHandler() {
         return new Handler(Looper.getMainLooper());
+    }
+
+    public static void postOnMain(Runnable message) {
+        getMainHandler().post(message);
+    }
+
+    public static void postOnMainWithDelay(Runnable message, long delayMillis) {
+        getMainHandler().postDelayed(message, delayMillis);
     }
 }

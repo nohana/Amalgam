@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 /**
  * Utility for application object.
  */
+@SuppressWarnings("unused") // public APIs
 public final class ApplicationUtils {
     private static final String[] INTERNAL_PATH = new String[] { "/data", "/system" };
 

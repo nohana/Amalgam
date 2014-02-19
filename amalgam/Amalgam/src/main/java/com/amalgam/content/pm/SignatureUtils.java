@@ -15,19 +15,19 @@
  */
 package com.amalgam.content.pm;
 
+import com.amalgam.lang.StringUtils;
+import com.amalgam.security.MessageDigestUtils;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.amalgam.lang.StringUtils;
-import com.amalgam.security.MessageDigestUtils;
-
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class SignatureUtils {
     public static final String TAG = SignatureUtils.class.getSimpleName();
 

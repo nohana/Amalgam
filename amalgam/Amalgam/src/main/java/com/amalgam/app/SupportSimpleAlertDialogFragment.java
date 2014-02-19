@@ -18,11 +18,9 @@ package com.amalgam.app;
 import com.amalgam.R;
 import com.amalgam.os.BundleUtils;
 
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
@@ -32,7 +30,7 @@ import android.support.v4.app.DialogFragment;
  * If the user confirmed that message, just dismiss the dialog.
  * @author keishin.yokomaku
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressWarnings("unused") // public APIs
 public class SupportSimpleAlertDialogFragment extends DialogFragment {
     public static final String TAG = SupportSimpleAlertDialogFragment.class.getSimpleName();
     private static final String ARGS_MESSAGE_RES = BundleUtils.buildKey(SupportSimpleAlertDialogFragment.class, "ARGS_MESSAGE_RES");

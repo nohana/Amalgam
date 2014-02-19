@@ -19,10 +19,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public class HttpsURLConnectionUtils {
     private HttpsURLConnectionUtils() {}
 
-    public static final void disconnect(HttpsURLConnection connection) {
+    public static void disconnect(HttpsURLConnection connection) {
         if (connection == null) {
             return;
         }

@@ -19,6 +19,7 @@ import android.database.Cursor;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class CursorUtils {
     private static final int TRUE = 1;
 

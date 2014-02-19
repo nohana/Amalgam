@@ -15,12 +15,13 @@
  */
 package com.amalgam.app;
 
+import com.amalgam.os.HandlerUtils;
+
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 
-import com.amalgam.os.HandlerUtils;
-
+@SuppressWarnings("unused") // public APIs
 public final class DialogFragmentUtils {
     private DialogFragmentUtils() {}
 
