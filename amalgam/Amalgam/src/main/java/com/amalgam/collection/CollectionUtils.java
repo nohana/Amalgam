@@ -52,4 +52,15 @@ public final class CollectionUtils {
         }
         return collection.size() - 1;
     }
+    
+    /*
+     * Checks if the collection is either null or empty.
+     * @return true if the collection is null, or empty.
+     */
+    public static boolean isEmpty(final Collection<?> collection) {
+        if (collection == null) {
+            return true;
+        }
+        return collection.isEmpty();
+    }
 }
