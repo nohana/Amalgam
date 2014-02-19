@@ -43,6 +43,17 @@ public final class CollectionUtils {
     }
 
     /**
+     * Calculates the index of the last entry in the collection.
+     * @return the last entry index.
+     */
+    public static int getLastIndex(final Collection<?> collection) {
+        if (isEmptry(collection)) {
+            return 0;
+        }
+        return collection.size() - 1;
+    }
+    
+    /*
      * Checks if the collection is either null or empty.
      * @return true if the collection is null, or empty.
      */
