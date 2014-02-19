@@ -41,4 +41,15 @@ public final class CollectionUtils {
         result.append("}");
         return result.toString();
     }
+
+    /**
+     * Calculates the index of the last entry in the collection.
+     * @return the last entry index.
+     */
+    public static int getLastIndex(final Collection<?> collection) {
+        if (isEmptry(collection)) {
+            return 0;
+        }
+        return collection.size() - 1;
+    }
 }
