@@ -26,6 +26,7 @@ import android.os.Build;
  * @author keishin.yokomaku
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressWarnings("unused") // public APIs
 public class MockFragmentTransaction extends FragmentTransaction {
     @Override
     public FragmentTransaction add(Fragment fragment, String tag) {

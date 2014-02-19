@@ -19,6 +19,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 
+@SuppressWarnings("unused") // public APIs
 public final class AppWidgetManagerUtils {
     private AppWidgetManagerUtils() {}
 

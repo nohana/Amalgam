@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class ConfigurationUtils {
     private ConfigurationUtils() {}
 

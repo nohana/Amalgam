@@ -18,6 +18,7 @@ package com.amalgam.provider;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
+@SuppressWarnings("unused") // public APIs
 public final class ContactsContractUtils {
     private ContactsContractUtils() {}
 

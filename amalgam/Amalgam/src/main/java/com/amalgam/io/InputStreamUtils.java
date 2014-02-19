@@ -17,12 +17,11 @@ package com.amalgam.io;
 
 import android.util.Log;
 
-import com.amalgam.io.CloseableUtils;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+@SuppressWarnings("unused") // public APIs
 public final class InputStreamUtils {
     public static final String TAG = InputStreamUtils.class.getSimpleName();
 

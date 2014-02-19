@@ -15,15 +15,17 @@
  */
 package com.amalgam.app;
 
+import com.amalgam.os.BundleUtils;
+
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
-import com.amalgam.os.BundleUtils;
-
 /**
+ * Support api version of {@link com.amalgam.app.ProgressDialogFragment}.
  */
+@SuppressWarnings("unused") // public APIs
 public final class SupportProgressDialogFragment extends DialogFragment {
     public static final String TAG = SupportProgressDialogFragment.class.getSimpleName();
     private static final String ARGS_TITLE = BundleUtils.buildKey(SupportProgressDialogFragment.class, "ARGS_TITLE");

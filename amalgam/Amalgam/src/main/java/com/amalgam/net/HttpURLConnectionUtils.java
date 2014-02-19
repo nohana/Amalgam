@@ -22,6 +22,7 @@ import java.net.HttpURLConnection;
 /**
  * Utility for HttpURLConnection.
  */
+@SuppressWarnings("unused") // public APIs
 public class HttpURLConnectionUtils {
     /**
      * Do NOT instantiate this class.
@@ -32,7 +33,7 @@ public class HttpURLConnectionUtils {
      * @see {@link java.net.HttpURLConnection#disconnect()}
      * @param connection
      */
-    public static final void disconnect(HttpURLConnection connection) {
+    public static void disconnect(HttpURLConnection connection) {
         if (connection == null) {
             return;
         }
@@ -42,7 +43,7 @@ public class HttpURLConnectionUtils {
     /**
      * Avoid connection pool pollution on connection reuse by disabling it earlier than Froyo.
      */
-    public static final void avoidConnectionPoolPollution() {
+    public static void avoidConnectionPoolPollution() {
         if (Build.VERSION_CODES.FROYO > Build.VERSION.SDK_INT) {
             System.setProperty("http.keepAlive", "false");
         }

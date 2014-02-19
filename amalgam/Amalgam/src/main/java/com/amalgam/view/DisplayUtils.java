@@ -23,6 +23,7 @@ import android.os.Build;
 import android.view.Display;
 import android.view.WindowManager;
 
+@SuppressWarnings("unused") // public APIs
 public final class DisplayUtils {
     private DisplayUtils() {}
 

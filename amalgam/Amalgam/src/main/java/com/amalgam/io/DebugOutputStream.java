@@ -24,6 +24,7 @@ import java.io.OutputStream;
  * Print buffer onto android logcat on read stream for debugging.
  * @author KeithYokoma
  */
+@SuppressWarnings("unused") // public APIs
 public class DebugOutputStream extends OutputStream {
     public static final String TAG = DebugOutputStream.class.getSimpleName();
     private OutputStream mStream;

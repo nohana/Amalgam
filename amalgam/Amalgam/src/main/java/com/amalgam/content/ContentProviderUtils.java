@@ -23,6 +23,7 @@ import android.net.Uri;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class ContentProviderUtils {
     private static final String PLURAL_MIME_TYPE = "vnd.android.cursor.dir";
     private static final String SINGULAR_MIME_TYPE = "vnd.android.cursor.item";

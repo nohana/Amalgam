@@ -24,10 +24,15 @@ import android.content.pm.PackageManager;
 /**
  * Utility for application object.
  */
+@SuppressWarnings("unused") // public APIs
 public final class ApplicationUtils {
     private static final String[] INTERNAL_PATH = new String[] { "/data", "/system" };
 
     private ApplicationUtils() {}
+
+    public static final Application getApplication(Context context) {
+        return (Application) context.getApplicationContext();
+    }
 
     public static final boolean isDebuggable(Context context) {
         return isDebuggable((Application) context.getApplicationContext());

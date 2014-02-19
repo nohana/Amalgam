@@ -27,6 +27,7 @@ import java.io.PrintWriter;
  * All of the method call will throw {@link UnsupportedOperationException}.
  * @author keishin.yokomaku
  */
+@SuppressWarnings("unused") // public APIs
 public class MockSupportLoaderManager extends LoaderManager {
     @Override
     public void destroyLoader(int id) {

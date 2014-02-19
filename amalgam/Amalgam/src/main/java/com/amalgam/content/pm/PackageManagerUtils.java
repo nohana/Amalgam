@@ -28,6 +28,7 @@ import com.amalgam.R;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class PackageManagerUtils {
     public static final String TAG = PackageManagerUtils.class.getSimpleName();
     private static final int FALLBACK_VERSION_CODE = 0;

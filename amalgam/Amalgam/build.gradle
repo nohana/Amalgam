@@ -22,14 +22,10 @@ android {
     }
 }
 
-tasks.withType(Compile) {
-    options.encoding = 'UTF-8'
-}
-
 dependencies {
-	compile 'com.android.support:appcompat-v7:18.0.0'
-	compile 'com.android.support:gridlayout-v7:18.0.0'
-	compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:appcompat-v7:18.0.0'
+    compile 'com.android.support:gridlayout-v7:18.0.0'
+    compile 'com.android.support:support-v4:18.0.0'
 }
 
 def repos = new File(rootDir, "repository")
@@ -40,7 +36,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${repos.absolutePath}"
-            pom.version = '0.3.0'
+            pom.version = '0.3.1'
             pom.groupId = 'com.amalgam'
             pom.artifactId = 'Amalgam'
         }

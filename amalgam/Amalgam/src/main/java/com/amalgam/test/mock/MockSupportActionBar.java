@@ -25,6 +25,7 @@ import android.widget.SpinnerAdapter;
  * All of the method call will throw {@link UnsupportedOperationException}.
  * @author keishin.yokomaku
  */
+@SuppressWarnings("unused") // public APIs
 public class MockSupportActionBar extends ActionBar {
     @Override
     public void setCustomView(View view) {

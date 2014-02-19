@@ -15,29 +15,31 @@
  */
 package com.amalgam.widget;
 
+import com.amalgam.os.HandlerUtils;
+
 import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 import android.widget.Toast;
 
+@SuppressWarnings("unused") // public APIs
 public final class ToastUtils {
     private ToastUtils() {}
 
-    public static final void showOnUiThread(Context applicationContext, int stringResId, int duration) {
-        Handler handler = new Handler(Looper.getMainLooper());
+    public static void showOnUiThread(Context applicationContext, int stringResId, int duration) {
+        Handler handler = HandlerUtils.getMainHandler();
         showOnUiThread(applicationContext, stringResId, duration, handler);
     }
 
-    public static final void showOnUiThread(Context applicationContext, int stringResId, int duration, Handler handler) {
+    public static void showOnUiThread(Context applicationContext, int stringResId, int duration, Handler handler) {
         showOnUiThread(applicationContext, applicationContext.getString(stringResId), duration, handler);
     }
 
-    public static final void showOnUiThread(Context applicationContext, String message, int duration) {
-        Handler handler = new Handler(Looper.getMainLooper());
+    public static void showOnUiThread(Context applicationContext, String message, int duration) {
+        Handler handler = HandlerUtils.getMainHandler();
         showOnUiThread(applicationContext, message, duration, handler);
     }
 
-    public static final void showOnUiThread(final Context applicationContext, final String message, final int duration, Handler handler) {
+    public static void showOnUiThread(final Context applicationContext, final String message, final int duration, Handler handler) {
         handler.post(new Runnable() {
             @Override
             public void run() {

@@ -20,6 +20,7 @@ import android.os.Parcel;
 import java.io.Serializable;
 import java.util.Date;
 
+@SuppressWarnings("unused") // public APIs
 public final class ParcelUtils {
     private static final int FALSE = 0;
     private static final int TRUE = 1;
@@ -28,11 +29,11 @@ public final class ParcelUtils {
 
     private ParcelUtils() {}
 
-    public static final void writeBoolean(Parcel dest, boolean bool) {
+    public static void writeBoolean(Parcel dest, boolean bool) {
         dest.writeInt(bool ? TRUE : FALSE);
     }
 
-    public static final boolean readBoolean(Parcel source) {
+    public static boolean readBoolean(Parcel source) {
         return source.readInt() == TRUE;
     }
 

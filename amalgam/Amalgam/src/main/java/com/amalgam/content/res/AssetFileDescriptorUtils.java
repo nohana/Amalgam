@@ -7,6 +7,7 @@ import java.io.IOException;
 
 /**
  */
+@SuppressWarnings("unused") // public APIs
 public final class AssetFileDescriptorUtils {
     public static final String TAG = AssetFileDescriptorUtils.class.getSimpleName();
 

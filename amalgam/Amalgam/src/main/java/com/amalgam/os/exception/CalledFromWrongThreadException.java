@@ -21,6 +21,7 @@ package com.amalgam.os.exception;
  * @author keishin.yokomaku
  *
  */
+@SuppressWarnings("unused") // public APIs
 public class CalledFromWrongThreadException extends RuntimeException {
     private static final long serialVersionUID = 491900897762569060L;
 

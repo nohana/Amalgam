@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
+@SuppressWarnings("unused") // public APIs
 public final class ParcelFileDescriptorUtils {
     public static final String TAG = ParcelFileDescriptorUtils.class.getSimpleName();
 
