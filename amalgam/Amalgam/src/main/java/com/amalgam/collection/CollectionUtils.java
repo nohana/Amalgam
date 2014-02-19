@@ -41,4 +41,15 @@ public final class CollectionUtils {
         result.append("}");
         return result.toString();
     }
+
+    /**
+     * Checks if the collection is either null or empty.
+     * @return true if the collection is null, or empty.
+     */
+    public static boolean isEmpty(final Collection<?> collection) {
+        if (collection == null) {
+            return true;
+        }
+        return collection.isEmpty();
+    }
 }
