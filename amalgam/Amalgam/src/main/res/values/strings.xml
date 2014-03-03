@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">Amalgam</string>
-
     <string name="dialog_title_simple_alert">Notice</string>
     <string name="dialog_button_ok">OK</string>
 </resources>
