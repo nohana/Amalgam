@@ -20,6 +20,7 @@ import com.amalgam.content.ContextUtils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.WindowManager;
 
 @SuppressWarnings("unused") // public APIs
@@ -75,5 +76,16 @@ public final class ViewUtils {
             return 1;
         }
         return pixels/scaledDensity;
+    }
+
+    /**
+     * Toggle visibility of a {@link android.view.View}.
+     * Status of invisible is applied by the parameter of hidingPolicy.
+     * @param view to toggle
+     * @param hidingPolicy {@link android.view.View#INVISIBLE} or {@link android.view.View#GONE}
+     */
+    public static void toggleVisibility(View view, int hidingPolicy) {
+        int current = view.getVisibility();
+        view.setVisibility(current == View.VISIBLE ? hidingPolicy : View.VISIBLE);
     }
 }
