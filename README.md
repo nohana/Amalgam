@@ -8,7 +8,7 @@ Grab via Gradle from Maven Central
 
 ```groovy
 dependencies {
-    compile 'com.amalgam:Amalgam:0.3.2
+    compile 'com.amalgam:Amalgam:0.3.2'
 }
 ```
 
