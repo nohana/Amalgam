@@ -22,18 +22,32 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 
+/**
+ * Utility for the {@link java.io.File}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class FileUtils {
     private FileUtils() {}
 
-    public static final boolean makeDirsIfNeeded(File dir) {
-        if (dir.exists()) {
-            return false;
-        }
-        return dir.mkdirs();
+    /**
+     * Create a new directory if not exists.
+     * @param dir to create.
+     * @return true if already exists, or newly created.
+     */
+    public static boolean makeDirsIfNeeded(File dir) {
+        return dir.exists() || dir.mkdirs();
     }
 
-    public static final long copy(File source, File destination) throws FileNotFoundException, IOException {
+    /**
+     * Copy the file from the source to the destination.
+     * @param source the source file to be copied.
+     * @param destination the destination file to copy.
+     * @see java.nio.channels.FileChannel#transferTo(long, long, java.nio.channels.WritableByteChannel).
+     * @return the transferred byte count.
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public static long copy(File source, File destination) throws FileNotFoundException, IOException {
         FileInputStream in = null;
         FileOutputStream out = null;
         try {
@@ -46,7 +60,15 @@ public final class FileUtils {
         }
     }
 
-    public static final long copy(FileInputStream in, FileOutputStream out) throws IOException {
+    /**
+     * Copy the file using streams.
+     * @param in source.
+     * @param out destination.
+     * @see java.nio.channels.FileChannel#transferTo(long, long, java.nio.channels.WritableByteChannel)
+     * @return the transferred byte count.
+     * @throws IOException
+     */
+    public static long copy(FileInputStream in, FileOutputStream out) throws IOException {
         FileChannel source = null;
         FileChannel destination = null;
         try {

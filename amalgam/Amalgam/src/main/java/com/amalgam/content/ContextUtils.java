@@ -58,211 +58,443 @@ import android.view.textservice.TextServicesManager;
 
 import java.io.File;
 
+/**
+ * Utility for the {@link android.content.Context}.
+ */
 @SuppressWarnings("unused") // Public APIs
-public final class ContextUtils {
-    private ContextUtils() {}
+public class ContextUtils {
+    private ContextUtils() {
+        throw new AssertionError();
+    }
 
-    public static final Application getApplication(Context context) {
+    /**
+     * Obtain {@link android.app.Application} from the context.
+     * @param context the context.
+     * @return the {@link android.app.Application}.
+     */
+    public static Application getApplication(Context context) {
         return (Application) context.getApplicationContext();
     }
 
+    /**
+     * Get the file points to an external pictures directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForPictures(Context context) {
+    public static File getExternalFilesDirForPictures(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
     }
 
+    /**
+     * Get the file points to an external music directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForMusic(Context context) {
+    public static File getExternalFilesDirForMusic(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
     }
 
+    /**
+     * Get the file points to an external movies directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForMovies(Context context) {
+    public static File getExternalFilesDirForMovies(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_MOVIES);
     }
 
+    /**
+     * Get the file points to an external alarms directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForAlarms(Context context) {
+    public static File getExternalFilesDirForAlarms(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_ALARMS);
     }
 
+    /**
+     * Get the file points to an external dcim directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForDcim(Context context) {
+    public static File getExternalFilesDirForDcim(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_DCIM);
     }
 
+    /**
+     * Get the file points to an external notifications directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForNotifications(Context context) {
+    public static File getExternalFilesDirForNotifications(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_NOTIFICATIONS);
     }
 
+    /**
+     * Get the file points to an external downloads directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForDownloads(Context context) {
+    public static File getExternalFilesDirForDownloads(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
     }
 
+    /**
+     * Get the file points to an external pictures directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForPodCasts(Context context) {
+    public static File getExternalFilesDirForPodCasts(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_PODCASTS);
     }
 
+    /**
+     * Get the file points to an external ringtones directory.
+     * @param context the context.
+     * @return the {@link java.io.File}.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final File getExternalFilesDirForRingtones(Context context) {
+    public static File getExternalFilesDirForRingtones(Context context) {
         return context.getExternalFilesDir(Environment.DIRECTORY_RINGTONES);
     }
 
-    public static final AlarmManager getAlarmManager(Context context) {
+    /**
+     * Get the {@link android.app.AlarmManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.AlarmManager}.
+     */
+    public static AlarmManager getAlarmManager(Context context) {
         return (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
 
-    public static final NotificationManager getNotificationManager(Context context) {
+    /**
+     * Get the {@link android.app.NotificationManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.NotificationManager}.
+     */
+    public static NotificationManager getNotificationManager(Context context) {
         return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
-    public static final ActivityManager  getActivityManager(Context context) {
+    /**
+     * Get the {@link android.app.ActivityManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.ActivityManager}.
+     */
+    public static ActivityManager  getActivityManager(Context context) {
         return (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
     }
 
-    public static final PowerManager getPowerManager(Context context) {
+    /**
+     * Get the {@link android.os.PowerManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.os.PowerManager}.
+     */
+    public static PowerManager getPowerManager(Context context) {
         return (PowerManager) context.getSystemService(Context.POWER_SERVICE);
     }
 
-    public static final InputMethodManager getInputMethodManager(Context context) {
+    /**
+     * Get the {@link android.view.inputmethod.InputMethodManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.view.inputmethod.InputMethodManager}.
+     */
+    public static InputMethodManager getInputMethodManager(Context context) {
         return (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
     }
 
+    /**
+     * Get the {@link android.hardware.input.InputManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.hardware.input.InputManager}
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static final InputManager getInputManager(Context context) {
+    public static InputManager getInputManager(Context context) {
         return (InputManager) context.getSystemService(Context.INPUT_SERVICE);
     }
 
-    public static final ConnectivityManager getConnectivityManager(Context context) {
+    /**
+     * Get the {@link android.net.ConnectivityManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.net.ConnectivityManager}
+     */
+    public static ConnectivityManager getConnectivityManager(Context context) {
         return (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
-    public static final LayoutInflater getLayoutInflater(Context context) {
+    /**
+     * Get the {@link android.view.LayoutInflater} service for this context.
+     * @see android.view.LayoutInflater#from(android.content.Context).
+     * @param context the context.
+     * @return the {@link android.view.LayoutInflater}
+     */
+    public static LayoutInflater getLayoutInflater(Context context) {
         return (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public static final WindowManager getWindowManager(Context context) {
+    /**
+     * Get the {@link android.view.WindowManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.view.WindowManager}
+     */
+    public static WindowManager getWindowManager(Context context) {
         return (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     }
 
-    public static final AccountManager getAccountManager(Context context) {
+    /**
+     * Get the {@link android.accounts.AccountManager} service for this context.
+     * @see android.accounts.AccountManager#get(android.content.Context).
+     * @param context the context.
+     * @return the {@link android.accounts.AccountManager}
+     */
+    public static AccountManager getAccountManager(Context context) {
         return (AccountManager) context.getSystemService(Context.ACCOUNT_SERVICE);
     }
 
+    /**
+     * Get the {@link android.nfc.NfcManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.nfc.NfcManager}
+     */
     @TargetApi(Build.VERSION_CODES.GINGERBREAD_MR1)
-    public static final NfcManager getNfcManager(Context context) {
+    public static NfcManager getNfcManager(Context context) {
         return (NfcManager) context.getSystemService(Context.NFC_SERVICE);
     }
 
-    public static final AccessibilityManager getAccessibilityManager(Context context) {
+    /**
+     * Get the {@link android.view.accessibility.AccessibilityManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.view.accessibility.AccessibilityManager}
+     */
+    public static AccessibilityManager getAccessibilityManager(Context context) {
         return (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
     }
 
-    public static final AudioManager getAudioManager(Context context) {
+    /**
+     * Get the {@link android.media.AudioManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.media.AudioManager}
+     */
+    public static AudioManager getAudioManager(Context context) {
         return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
+    /**
+     * Get the {@link android.bluetooth.BluetoothAdapter} service for this context.
+     * @param context the context.
+     * @return the {@link android.bluetooth.BluetoothAdapter}
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public static final BluetoothAdapter getBluetoothAdapter(Context context) {
+    public static BluetoothAdapter getBluetoothAdapter(Context context) {
         return (BluetoothAdapter) context.getSystemService(Context.BLUETOOTH_SERVICE);
     }
 
-    public static final ClipboardManager getClipboardManager(Context context) {
+    /**
+     * Get the {@link android.content.ClipboardManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.content.ClipboardManager}
+     */
+    public static ClipboardManager getClipboardManager(Context context) {
         return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     }
 
+    /**
+     * Get the {@link android.app.admin.DevicePolicyManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.admin.DevicePolicyManager}
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final DevicePolicyManager getDevicePolicyManager(Context context) {
+    public static DevicePolicyManager getDevicePolicyManager(Context context) {
         return (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
     }
 
+    /**
+     * Get the {@link android.hardware.display.DisplayManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.hardware.display.DisplayManager}
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static final DisplayManager getDisplayManager(Context context) {
+    public static DisplayManager getDisplayManager(Context context) {
         return (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     }
 
+    /**
+     * Get the {@link android.app.DownloadManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.DownloadManager}
+     */
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public static final DownloadManager getDownloadManager(Context context) {
+    public static DownloadManager getDownloadManager(Context context) {
         return (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
     }
 
+    /**
+     * Get the {@link android.os.DropBoxManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.os.DropBoxManager}
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final DropBoxManager getDropBoxManager(Context context) {
+    public static DropBoxManager getDropBoxManager(Context context) {
         return (DropBoxManager) context.getSystemService(Context.DROPBOX_SERVICE);
     }
 
-    public static final KeyguardManager getKeyguardManager(Context context) {
+    /**
+     * Get the {@link android.app.KeyguardManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.KeyguardManager}
+     */
+    public static KeyguardManager getKeyguardManager(Context context) {
         return (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
     }
 
-    public static final LocationManager getLocationManager(Context context) {
+    /**
+     * Get the {@link android.location.LocationManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.location.LocationManager}
+     */
+    public static LocationManager getLocationManager(Context context) {
         return (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
     }
 
+    /**
+     * Get the {@link android.media.MediaRouter} service for this context.
+     * @param context the context.
+     * @return the {@link android.media.MediaRouter}
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static final MediaRouter getMediaRouter(Context context) {
+    public static MediaRouter getMediaRouter(Context context) {
         return (MediaRouter) context.getSystemService(Context.MEDIA_ROUTER_SERVICE);
     }
 
+    /**
+     * Get the {@link android.net.nsd.NsdManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.net.nsd.NsdManager}
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public static final NsdManager getNsdManager(Context context) {
+    public static NsdManager getNsdManager(Context context) {
         return (NsdManager) context.getSystemService(Context.NSD_SERVICE);
     }
 
-    public static final SearchManager getSearchManager(Context context) {
+    /**
+     * Get the {@link android.app.SearchManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.SearchManager}
+     */
+    public static SearchManager getSearchManager(Context context) {
         return (SearchManager) context.getSystemService(Context.SEARCH_SERVICE);
     }
 
-    public static final SensorManager getSensorManager(Context context) {
+    /**
+     * Get the {@link android.hardware.SensorManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.hardware.SensorManager}
+     */
+    public static SensorManager getSensorManager(Context context) {
         return (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
+    /**
+     * Get the {@link android.os.storage.StorageManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.os.storage.StorageManager}
+     */
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public static final StorageManager getStorageManager(Context context) {
+    public static StorageManager getStorageManager(Context context) {
         return (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
     }
 
-    public static final TelephonyManager getTelephonyManager(Context context) {
+    /**
+     * Get the {@link android.telephony.TelephonyManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.telephony.TelephonyManager}
+     */
+    public static TelephonyManager getTelephonyManager(Context context) {
         return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
+    /**
+     * Get the {@link android.view.textservice.TextServicesManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.view.textservice.TextServicesManager}
+     */
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public static final TextServicesManager getTextServicesManager(Context context) {
+    public static TextServicesManager getTextServicesManager(Context context) {
         return (TextServicesManager) context.getSystemService(Context.TEXT_SERVICES_MANAGER_SERVICE);
     }
 
+    /**
+     * Get the {@link android.app.UiModeManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.app.UiModeManager}
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
-    public static final UiModeManager getUiModeManager(Context context) {
+    public static UiModeManager getUiModeManager(Context context) {
         return (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
     }
 
+    /**
+     * Get the {@link android.hardware.usb.UsbManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.hardware.usb.UsbManager}
+     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
-    public static final UsbManager getUsbManager(Context context) {
+    public static UsbManager getUsbManager(Context context) {
         return (UsbManager) context.getSystemService(Context.USB_SERVICE);
     }
 
+    /**
+     * Get the {@link android.os.UserManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.os.UserManager}
+     */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public static final UserManager getUserManager(Context context) {
+    public static UserManager getUserManager(Context context) {
         return (UserManager) context.getSystemService(Context.USER_SERVICE);
     }
 
-    public static final Vibrator getVibrator(Context context) {
+    /**
+     * Get the {@link android.os.Vibrator} service for this context.
+     * @param context the context.
+     * @return the {@link android.os.Vibrator}
+     */
+    public static Vibrator getVibrator(Context context) {
         return (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
-    public static final WallpaperService getWallpaperManager(Context context) {
+    /**
+     * Get the {@link android.service.wallpaper.WallpaperService} service for this context.
+     * @param context the context.
+     * @return the {@link android.service.wallpaper.WallpaperService}
+     */
+    public static WallpaperService getWallpaperManager(Context context) {
         return (WallpaperService) context.getSystemService(Context.WALLPAPER_SERVICE);
     }
 
+    /**
+     * Get the {@link android.net.wifi.p2p.WifiP2pManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.net.wifi.p2p.WifiP2pManager}
+     */
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    public static final WifiP2pManager getWifiP2pManager(Context context) {
+    public static WifiP2pManager getWifiP2pManager(Context context) {
         return (WifiP2pManager) context.getSystemService(Context.WIFI_P2P_SERVICE);
     }
 
-    public static final WifiManager getWifiManager(Context context) {
+    /**
+     * Get the {@link android.net.wifi.WifiManager} service for this context.
+     * @param context the context.
+     * @return the {@link android.net.wifi.WifiManager}
+     */
+    public static WifiManager getWifiManager(Context context) {
         return (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     }
 }

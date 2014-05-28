@@ -23,12 +23,22 @@ import android.os.Build;
 import android.view.Display;
 import android.view.WindowManager;
 
+/**
+ * Utility for the {@link android.view.Display}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class DisplayUtils {
-    private DisplayUtils() {}
+    private DisplayUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Get the display width and height.
+     * @param manager the window manager.
+     * @return the display size.
+     */
     @SuppressLint("NewApi")
-    public static final Point getDisplaySize(WindowManager manager) {
+    public static Point getDisplaySize(WindowManager manager) {
         Display display = manager.getDefaultDisplay();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
             Point size = new Point();
@@ -42,9 +52,14 @@ public final class DisplayUtils {
         }
     }
 
+    /**
+     * Get the display width.
+     * @param manager the window manager.
+     * @return the display width.
+     */
     @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
-    public static final int getDisplayWidth(WindowManager manager) {
+    public static int getDisplayWidth(WindowManager manager) {
         Display display = manager.getDefaultDisplay();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
             Point size = new Point();
@@ -56,17 +71,32 @@ public final class DisplayUtils {
 
     }
 
-    public static final int getDisplayWidth(Activity activity) {
+    /**
+     * Get the display width.
+     * @param activity the activity.
+     * @return the display width.
+     */
+    public static int getDisplayWidth(Activity activity) {
         return getDisplayWidth(activity.getWindowManager());
     }
 
-    public static final int getDisplayWidth(Context context) {
+    /**
+     * Get the display width.
+     * @param context the context.
+     * @return the display width.
+     */
+    public static int getDisplayWidth(Context context) {
         return getDisplayWidth((WindowManager) context.getSystemService(Context.WINDOW_SERVICE));
     }
 
+    /**
+     * Get the display height.
+     * @param manager the window manager.
+     * @return the display height.
+     */
     @SuppressLint("NewApi")
     @SuppressWarnings("deprecation")
-    public static final int getDisplayHeight(WindowManager manager) {
+    public static int getDisplayHeight(WindowManager manager) {
         Display display = manager.getDefaultDisplay();
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB_MR2) {
             Point size = new Point();
@@ -78,11 +108,21 @@ public final class DisplayUtils {
 
     }
 
-    public static final int getDisplayHeight(Activity activity) {
+    /**
+     * Get the display height.
+     * @param activity the activity.
+     * @return the display height.
+     */
+    public static int getDisplayHeight(Activity activity) {
         return getDisplayHeight(activity.getWindowManager());
     }
 
-    public static final int getDisplayHeight(Context context) {
+    /**
+     * Get the display height.
+     * @param context the context.
+     * @return the display height.
+     */
+    public static int getDisplayHeight(Context context) {
         return getDisplayHeight((WindowManager) context.getSystemService(Context.WINDOW_SERVICE));
     }
 }

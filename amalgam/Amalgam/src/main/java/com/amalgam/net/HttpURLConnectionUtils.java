@@ -20,18 +20,21 @@ import android.os.Build;
 import java.net.HttpURLConnection;
 
 /**
- * Utility for HttpURLConnection.
+ * Utility for {@link java.net.HttpURLConnection}.
  */
 @SuppressWarnings("unused") // public APIs
 public class HttpURLConnectionUtils {
     /**
      * Do NOT instantiate this class.
      */
-    private HttpURLConnectionUtils() {}
+    private HttpURLConnectionUtils() {
+        throw new AssertionError();
+    }
 
     /**
+     * Disconnect from the url with null checks.
      * @see {@link java.net.HttpURLConnection#disconnect()}
-     * @param connection
+     * @param connection to disconnect.
      */
     public static void disconnect(HttpURLConnection connection) {
         if (connection == null) {

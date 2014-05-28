@@ -21,13 +21,22 @@ import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
 /**
+ * Utility for the {@link java.nio.channels.Channel} APIs.
  */
 @SuppressWarnings("unused") // public APIs
 public final class ChannelUtils {
     private static final int CAPACITY = 16 * 1024;
 
-    private ChannelUtils() {}
+    private ChannelUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Copy the channel to the destination.
+     * @param src source channel.
+     * @param dest destination channel.
+     * @throws IOException
+     */
     public static void copy(ReadableByteChannel src, WritableByteChannel dest) throws IOException {
         ByteBuffer buffer = ByteBuffer.allocateDirect(CAPACITY);
         while (src.read(buffer) != -1) {

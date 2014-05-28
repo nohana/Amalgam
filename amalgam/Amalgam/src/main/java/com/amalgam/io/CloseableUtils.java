@@ -21,6 +21,7 @@ import java.io.Closeable;
 import java.io.IOException;
 
 /**
+ * Utility for the {@link java.io.Closeable}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class CloseableUtils {
@@ -30,7 +31,7 @@ public final class CloseableUtils {
     /**
      * Close closeable like i/o streams quietly.
      * Do NOT close {@link android.database.Cursor} with this method, or will cause crashing on some device.
-     * @param closeable
+     * @param closeable to close.
      */
     public static final void close(Closeable closeable) {
         if (closeable == null) {

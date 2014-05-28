@@ -39,12 +39,22 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Utility for the {@link android.graphics.Bitmap}.
+ */
 @SuppressWarnings("unused") // Public APIs
 public final class BitmapUtils {
     public static final String TAG = BitmapUtils.class.getSimpleName();
 
-    private BitmapUtils() {}
+    private BitmapUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Recycle the bitmap with null checks.
+     * If the bitmap is already recycled, do nothing.
+     * @param bitmap to recycle.
+     */
     public static void recycle(Bitmap bitmap) {
         if (bitmap == null || bitmap.isRecycled()) {
             return;
@@ -52,6 +62,12 @@ public final class BitmapUtils {
         bitmap.recycle();
     }
 
+    /**
+     * Get width and height of the bitmap specified with the {@link android.net.Uri}.
+     * @param resolver the resolver.
+     * @param uri the uri that points to the bitmap.
+     * @return the size.
+     */
     public static Point getSize(ContentResolver resolver, Uri uri) {
         InputStream is = null;
         try {
@@ -70,10 +86,20 @@ public final class BitmapUtils {
         }
     }
 
+    /**
+     * Get width and height of the bitmap specified with the {@link java.io.File}.
+     * @param path the bitmap file path.
+     * @return the size.
+     */
     public static Point getSize(File path) {
         return getSize(path.getAbsolutePath());
     }
 
+    /**
+     * Get width and height of the bitmap specified with the file path.
+     * @param path the bitmap file path.
+     * @return the size.
+     */
     public static Point getSize(String path) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -83,10 +109,22 @@ public final class BitmapUtils {
         return new Point(width, height);
     }
 
+    /**
+     * Get width and height of the bitmap specified with the byte array.
+     * @param byteArray the bitmap itself.
+     * @return the size.
+     */
     public static Point getSize(byte[] byteArray) {
         return getSize(byteArray, 0, byteArray.length);
     }
 
+    /**
+     * Get width and height of the bitmap specified with the byte array.
+     * @param byteArray the bitmap itself.
+     * @param offset offset index.
+     * @param length array length.
+     * @return the size.
+     */
     public static Point getSize(byte[] byteArray, int offset, int length) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -96,10 +134,22 @@ public final class BitmapUtils {
         return new Point(width, height);
     }
 
+    /**
+     * Get width and height of the bitmap specified with the resource id.
+     * @param context the context.
+     * @param resId the resource id of the drawable.
+     * @return the drawable bitmap size.
+     */
     public static Point getSize(Context context, int resId) {
         return getSize(context.getResources(), resId);
     }
 
+    /**
+     * Get width and height of the bitmap specified with the resource id.
+     * @param res resource accessor.
+     * @param resId the resource id of the drawable.
+     * @return the drawable bitmap size.
+     */
     public static Point getSize(Resources res, int resId) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
@@ -109,6 +159,13 @@ public final class BitmapUtils {
         return new Point(width, height);
     }
 
+    /**
+     * Compress the bitmap to the byte array as the specified format and quality.
+     * @param bitmap to compress.
+     * @param format the format.
+     * @param quality the quality of the compressed bitmap.
+     * @return the compressed bitmap byte array.
+     */
     public static byte[] toByteArray(Bitmap bitmap, Bitmap.CompressFormat format, int quality) {
         ByteArrayOutputStream out = null;
         try {
@@ -120,6 +177,12 @@ public final class BitmapUtils {
         }
     }
 
+    /**
+     * Shrink the bitmap to the specified scale.
+     * @param bitmap to shrink.
+     * @param scale the shrink scale, must be < 1.0.
+     * @return the shrunk bitmap.
+     */
     public static Bitmap shrink(Bitmap bitmap, float scale) {
         if (scale >= 1.0f) {
             return bitmap.copy(bitmap.getConfig(), false);
@@ -131,6 +194,12 @@ public final class BitmapUtils {
         return Bitmap.createBitmap(bitmap, 0, 0, (int) (scale * bitmap.getWidth()), (int) (scale * bitmap.getHeight()), matrix, true);
     }
 
+    /**
+     * Expand the bitmap to the specified scale.
+     * @param bitmap to expand.
+     * @param scale the expand scale, must be > 1.0.
+     * @return the expanded bitmap.
+     */
     public static Bitmap expand(Bitmap bitmap, float scale) {
         if (scale <= 1.0f) {
             return bitmap.copy(bitmap.getConfig(), false);
@@ -142,6 +211,17 @@ public final class BitmapUtils {
         return Bitmap.createBitmap(bitmap, 0, 0, (int) (scale * bitmap.getWidth()), (int) (scale * bitmap.getHeight()), matrix, true);
     }
 
+    /**
+     * Store the bitmap on the external storage path.
+     * @param context the context.
+     * @param bitmap to store.
+     * @param type type of the bitmap.
+     * @param path file path.
+     * @param filename file name.
+     * @param format bitmap format.
+     * @param quality the quality of the compressed bitmap.
+     * @return the compressed bitmap file.
+     */
     @TargetApi(Build.VERSION_CODES.FROYO)
     public static File storeOnExternalStorage(Context context, Bitmap bitmap, String type, String path, String filename, Bitmap.CompressFormat format, int quality) {
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
@@ -157,6 +237,16 @@ public final class BitmapUtils {
         return file;
     }
 
+    /**
+     * Store the bitmap on the cache directory path.
+     * @param context the context.
+     * @param bitmap to store.
+     * @param path file path.
+     * @param filename file name.
+     * @param format bitmap format.
+     * @param quality the quality of the compressed bitmap.
+     * @return the compressed bitmap file.
+     */
     public static File storeOnCacheDir(Context context, Bitmap bitmap, String path, String filename, Bitmap.CompressFormat format, int quality) {
         File dir = new File(context.getCacheDir(), path);
         FileUtils.makeDirsIfNeeded(dir);
@@ -167,6 +257,15 @@ public final class BitmapUtils {
         return file;
     }
 
+    /**
+     * Store the bitmap on the application private directory path.
+     * @param context the context.
+     * @param bitmap to store.
+     * @param filename file name.
+     * @param format bitmap format.
+     * @param quality the quality of the compressed bitmap.
+     * @return the compressed bitmap file.
+     */
     public static boolean storeOnApplicationPrivateDir(Context context, Bitmap bitmap, String filename, Bitmap.CompressFormat format, int quality) {
         OutputStream out = null;
         try {
@@ -180,6 +279,13 @@ public final class BitmapUtils {
         }
     }
 
+    /**
+     * Store the bitmap as a file.
+     * @param bitmap to store.
+     * @param format bitmap format.
+     * @param quality the quality of the compressed bitmap.
+     * @return the compressed bitmap file.
+     */
     public static boolean storeAsFile(Bitmap bitmap, File file, Bitmap.CompressFormat format, int quality) {
         OutputStream out = null;
         try {

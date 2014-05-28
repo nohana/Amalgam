@@ -17,6 +17,9 @@ package com.amalgam.collection;
 
 import java.util.Collection;
 
+/**
+ * Simple utility for the collection frameworks.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class CollectionUtils {
     private CollectionUtils() { }

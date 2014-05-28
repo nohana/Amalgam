@@ -16,12 +16,17 @@
 package com.amalgam.lang;
 
 /**
- *
+ * Utility for the {@link java.lang.String}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class StringUtils {
     private StringUtils() {}
 
+    /**
+     * Convert byte data to hex code string.
+     * @param data to convert.
+     * @return the hex code of the byte array.
+     */
     public static String byteToHex(byte[] data) {
         if (data == null) {
             return null;

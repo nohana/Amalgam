@@ -23,20 +23,32 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
+/**
+ * Utility for the {@link android.view.View}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class ViewUtils {
-    private ViewUtils() {}
+    private ViewUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Convert the dips to pixels, based on density scale.
+     *
+     * @param context the context.
+     * @param dip to be converted value.
+     * @return converted value(px).
+     */
     public static int dipToPixel(Context context, int dip) {
         return dipToPixel(context.getResources(), dip);
     }
 
     /**
-     * Convert the dips to pixels, based on density scale
+     * Convert the dips to pixels, based on density scale.
      *
-     * @param resources application resources
-     * @param dip to be converted value
-     * @return converted value(px)
+     * @param resources application resources.
+     * @param dip to be converted value.
+     * @return converted value(px).
      */
     public static int dipToPixel(Resources resources, int dip) {
         final float scale = resources.getDisplayMetrics().density;
@@ -44,15 +56,21 @@ public final class ViewUtils {
         return (int) (dip * scale + 0.5f);
     }
 
+    /**
+     * Convert the pixels to dips, based on density scale.
+     * @param context the context.
+     * @param pixel to be converted value.
+     * @return converted value(dip)
+     */
     public static float pixelToDip(Context context, int pixel) {
         return pixelToDip(ContextUtils.getWindowManager(context), pixel);
     }
 
     /**
      * Convert the pixels to dips, based on density scale
-     * @param windowManager the window manager of the display to use the scale density of
-     * @param pixel
-     * @return converted value(dip)
+     * @param windowManager the window manager of the display to use the scale density of.
+     * @param pixel to be converted value.
+     * @return converted value(dip).
      */
     public static float pixelToDip(WindowManager windowManager, int pixel) {
         DisplayMetrics metrics = new DisplayMetrics();
@@ -60,15 +78,33 @@ public final class ViewUtils {
         return metrics.scaledDensity * pixel;
     }
 
+    /**
+     * Convert the sip to pixels, based on density scale.
+     * @param context the context.
+     * @param sip to be converted value.
+     * @return converted value(px)
+     */
     public static float sipToPixel(Context context, float sip) {
         return sipToPixel(context.getResources(), sip);
     }
 
+    /**
+     * Convert the sip to pixels, based on density scale.
+     * @param resources application resources.
+     * @param sip to be converted value.
+     * @return converted value(px)
+     */
     public static float sipToPixel(Resources resources, float sip) {
         float density = resources.getDisplayMetrics().scaledDensity;
         return sip * density;
     }
 
+    /**
+     * Convert the pixels to sips, based on density scale.
+     * @param context the context.
+     * @param pixels to be converted value.
+     * @return converted value(sip)
+     */
     public static float pixelToSip(Context context, float pixels) {
         DisplayMetrics metrics = new DisplayMetrics();
         float scaledDensity = metrics.scaledDensity;

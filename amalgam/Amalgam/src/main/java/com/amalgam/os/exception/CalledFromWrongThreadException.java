@@ -18,7 +18,7 @@ package com.amalgam.os.exception;
 /**
  * Thrown when a method is invoked from wrong thread.
  * Generally, this exception is thrown when calling blocking call on main thread, or causes ANR.
- * @author keishin.yokomaku
+ * @author KeithYokoma
  *
  */
 @SuppressWarnings("unused") // public APIs
