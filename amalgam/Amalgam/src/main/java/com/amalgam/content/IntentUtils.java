@@ -16,12 +16,21 @@
 package com.amalgam.content;
 
 /**
+ * Utility for the {@link android.content.Intent}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class IntentUtils {
-    private IntentUtils() {}
+    private IntentUtils() {
+        throw new AssertionError();
+    }
 
-    public static final String buildAction(Class<?> clazz, String action) {
+    /**
+     * Build a custom intent action name, like "jp.co.nohana.amalgam.Sample.ACTION_SAMPLE".
+     * @param clazz the class name.
+     * @param action the action name.
+     * @return the custom action name.
+     */
+    public static String buildAction(Class<?> clazz, String action) {
         return new StringBuilder().append(clazz.getCanonicalName()).append(".").append(action).toString();
     }
 }

@@ -19,10 +19,19 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 
+/**
+ * Utility for {@link android.appwidget.AppWidgetManager}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class AppWidgetManagerUtils {
-    private AppWidgetManagerUtils() {}
+    private AppWidgetManagerUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Wrapper method of the {@link android.appwidget.AppWidgetManager#getAppWidgetIds(android.content.ComponentName)}.
+     * @see android.appwidget.AppWidgetManager#getAppWidgetIds(android.content.ComponentName).
+     */
     public static int[] getAppWidgetIds(AppWidgetManager appWidgetManager, Context context, Class<?> clazz) {
         return appWidgetManager.getAppWidgetIds(new ComponentName(context, clazz));
     }

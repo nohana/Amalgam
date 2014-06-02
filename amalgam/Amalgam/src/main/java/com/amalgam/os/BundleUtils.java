@@ -15,10 +15,23 @@
  */
 package com.amalgam.os;
 
+/**
+ * Utility for the {@link android.os.Bundle}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class BundleUtils {
-    private BundleUtils() {}
+    private BundleUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Build a custom bundle key name, to avoid conflict the bundle key name among the activities.
+     * This is also useful to build a intent extra key name.
+     *
+     * @param clazz the class.
+     * @param name the key name, in most case the name is UPPER_UNDERSCORE.
+     * @return the full qualified key name.
+     */
     public static String buildKey(Class<?> clazz, String name) {
         return new StringBuilder().append(clazz.getCanonicalName()).append(".").append(name).toString();
     }

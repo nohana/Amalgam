@@ -17,23 +17,67 @@ package com.amalgam.app;
 
 import com.amalgam.os.HandlerUtils;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Handler;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 
+/**
+ * Utility for {@link android.app.DialogFragment} and {@link android.support.v4.app.DialogFragment}.
+ * Operations for the support library version of {@link android.app.DialogFragment} has a method name prefix as "support".
+ */
 @SuppressWarnings("unused") // public APIs
 public final class DialogFragmentUtils {
-    private DialogFragmentUtils() {}
+    private DialogFragmentUtils() {
+        throw new AssertionError();
+    }
 
-    public static final void dismissOnLoaderCallback(final FragmentManager manager, final String tag) {
+    /**
+     * Find fragment registered on the manager.
+     * @param manager the manager.
+     * @param tag the tag string that is related to the {@link android.app.DialogFragment}.
+     * @param <F> the dialog fragment impl.
+     * @return the {@link android.app.DialogFragment}. {@code null} if the fragment not found.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    @SuppressWarnings("unchecked") // we know the dialog fragment is a child of fragment.
+    public static <F extends android.app.DialogFragment> F findDialogFragmentByTag(android.app.FragmentManager manager, String tag) {
+        return (F) manager.findFragmentByTag(tag);
+    }
+
+    /**
+     * Find fragment registered on the manager.
+     * @param manager the manager.
+     * @param tag the tag string that is related to the {@link android.support.v4.app.DialogFragment}.
+     * @param <F> the dialog fragment impl.
+     * @return the {@link android.support.v4.app.DialogFragment}. {@code null} if the fragment not found.
+     */
+    @SuppressWarnings("unchecked") // we know the dialog fragment is a child of fragment.
+    public static <F extends android.support.v4.app.DialogFragment> F supportFindDialogFragmentByTag(android.support.v4.app.FragmentManager manager, String tag) {
+        return (F) manager.findFragmentByTag(tag);
+    }
+
+    /**
+     * Dismiss {@link android.app.DialogFragment} for the tag on the loader callbacks.
+     * @param manager the manager.
+     * @param tag the tag string that is related to the {@link android.app.DialogFragment}.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void dismissOnLoaderCallback(final android.app.FragmentManager manager, final String tag) {
         dismissOnLoaderCallback(HandlerUtils.getMainHandler(), manager, tag);
     }
 
-    public static final void dismissOnLoaderCallback(Handler handler, final FragmentManager manager, final String tag) {
+    /**
+     * Dismiss {@link android.app.DialogFragment} for the tag on the loader callbacks with the specified {@link android.os.Handler}.
+     * @param handler the handler, in most case, this handler is the main handler.
+     * @param manager the manager.
+     * @param tag the tag string that is related to the {@link android.app.DialogFragment}.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void dismissOnLoaderCallback(Handler handler, final android.app.FragmentManager manager, final String tag) {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                DialogFragment fragment = (DialogFragment) manager.findFragmentByTag(tag);
+                android.app.DialogFragment fragment = (android.app.DialogFragment) manager.findFragmentByTag(tag);
                 if (fragment != null) {
                     fragment.dismiss();
                 }
@@ -41,11 +85,80 @@ public final class DialogFragmentUtils {
         });
     }
 
-    public static final void showOnLoaderCallback(final FragmentManager manager, final DialogFragment fragment, final String tag) {
+    /**
+     * Dismiss {@link android.support.v4.app.DialogFragment} for the tag on the loader callbacks.
+     * @param manager the manager.
+     * @param tag the tag string that is related to the {@link android.support.v4.app.DialogFragment}.
+     */
+    public static void supportDismissOnLoaderCallback(final android.support.v4.app.FragmentManager manager, final String tag) {
+        supportDismissOnLoaderCallback(HandlerUtils.getMainHandler(), manager, tag);
+    }
+
+
+    /**
+     * Dismiss {@link android.support.v4.app.DialogFragment} for the tag on the loader callbacks with the specified {@link android.os.Handler}.
+     * @param handler the handler, in most case, this handler is the main handler.
+     * @param manager the manager.
+     * @param tag the tag string that is related to the {@link android.support.v4.app.DialogFragment}.
+     */
+    public static void supportDismissOnLoaderCallback(Handler handler, final android.support.v4.app.FragmentManager manager, final String tag) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                android.support.v4.app.DialogFragment fragment = (android.support.v4.app.DialogFragment) manager.findFragmentByTag(tag);
+                if (fragment != null) {
+                    fragment.dismiss();
+                }
+            }
+        });
+    }
+
+    /**
+     * Show {@link android.app.DialogFragment} with the specified tag on the loader callbacks.
+     * @param manager the manager.
+     * @param fragment the fragment.
+     * @param tag the tag string that is related to the {@link android.app.DialogFragment}.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void showOnLoaderCallback(final android.app.FragmentManager manager, final android.app.DialogFragment fragment, final String tag) {
         showOnLoaderCallback(HandlerUtils.getMainHandler(), manager, fragment, tag);
     }
 
-    public static final void showOnLoaderCallback(Handler handler, final FragmentManager manager, final DialogFragment fragment, final String tag) {
+    /**
+     * Show {@link android.app.DialogFragment} with the specified tag on the loader callbacks.
+     * @param handler the handler, in most case, this handler is the main handler.
+     * @param manager the manager.
+     * @param fragment the fragment.
+     * @param tag the tag string that is related to the {@link android.app.DialogFragment}.
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void showOnLoaderCallback(Handler handler, final android.app.FragmentManager manager, final android.app.DialogFragment fragment, final String tag) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                fragment.show(manager, tag);
+            }
+        });
+    }
+
+    /**
+     * Show {@link android.support.v4.app.DialogFragment} with the specified tag on the loader callbacks.
+     * @param manager the manager.
+     * @param fragment the fragment.
+     * @param tag the tag string that is related to the {@link android.support.v4.app.DialogFragment}.
+     */
+    public static void supportShowOnLoaderCallback(final android.support.v4.app.FragmentManager manager, final android.support.v4.app.DialogFragment fragment, final String tag) {
+        supportShowOnLoaderCallback(HandlerUtils.getMainHandler(), manager, fragment, tag);
+    }
+
+    /**
+     * Show {@link android.support.v4.app.DialogFragment} with the specified tag on the loader callbacks.
+     * @param handler the handler, in most case, this handler is the main handler.
+     * @param manager the manager.
+     * @param fragment the fragment.
+     * @param tag the tag string that is related to the {@link android.support.v4.app.DialogFragment}.
+     */
+    public static void supportShowOnLoaderCallback(Handler handler, final android.support.v4.app.FragmentManager manager, final android.support.v4.app.DialogFragment fragment, final String tag) {
         handler.post(new Runnable() {
             @Override
             public void run() {

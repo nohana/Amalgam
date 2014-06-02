@@ -26,18 +26,34 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
+ * Utility for checking application package signature.
  */
 @SuppressWarnings("unused") // public APIs
 public final class SignatureUtils {
     public static final String TAG = SignatureUtils.class.getSimpleName();
 
-    private SignatureUtils() {}
+    private SignatureUtils() {
+        throw new AssertionError();
+    }
 
-    public static final boolean ensureSameSignature(Context context, String targetPackageName) {
+    /**
+     * Ensure the running application and the target package has the same signature.
+     * @param context the running application context.
+     * @param targetPackageName the target package name.
+     * @return true if the same signature.
+     */
+    public static boolean ensureSameSignature(Context context, String targetPackageName) {
         return ensureSameSignature(context, targetPackageName, getSignatureHexCode(context));
     }
 
-    public static final boolean ensureSameSignature(Context context, String targetPackageName, String expectedHash) {
+    /**
+     * Ensure the running application and the target package has the same signature.
+     * @param context the running application context.
+     * @param targetPackageName the target package name.
+     * @param expectedHash signature hash that the target package is expected to have signed.
+     * @return true if the same signature.
+     */
+    public static boolean ensureSameSignature(Context context, String targetPackageName, String expectedHash) {
         if (targetPackageName == null || expectedHash == null) {
             // cannot proceed anymore.
             return false;
@@ -46,11 +62,22 @@ public final class SignatureUtils {
         return hash.equals(getSignatureHexCode(context, targetPackageName));
     }
 
-    public static final String getSignatureHexCode(Context context) {
+    /**
+     * Obtains the signature hex code.
+     * @param context the context.
+     * @return the hex code of the signature.
+     */
+    public static String getSignatureHexCode(Context context) {
         return getSignatureHexCode(context, context.getPackageName());
     }
 
-    public static final String getSignatureHexCode(Context context, String targetPackageName) {
+    /**
+     * Obtains the signature hex code.
+     * @param context the context.
+     * @param targetPackageName the target package name.
+     * @return the hex code of the signature.
+     */
+    public static String getSignatureHexCode(Context context, String targetPackageName) {
         if (TextUtils.isEmpty(targetPackageName)) {
             return null;
         }

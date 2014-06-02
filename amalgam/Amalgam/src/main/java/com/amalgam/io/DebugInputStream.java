@@ -23,7 +23,6 @@ import java.io.InputStream;
 /**
  * Print buffer onto android logcat on read stream for debugging.
  * @author KeithYokoma
- *
  */
 @SuppressWarnings("unused") // public APIs
 public class DebugInputStream extends InputStream {

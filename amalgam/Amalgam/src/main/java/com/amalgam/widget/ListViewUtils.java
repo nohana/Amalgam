@@ -18,15 +18,20 @@ package com.amalgam.widget;
 import android.widget.ListView;
 
 /**
+ * Utility for the {@link android.widget.ListView}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class ListViewUtils {
-    private ListViewUtils() {}
+    private ListViewUtils() {
+        throw new AssertionError();
+    }
 
-    public static final boolean isEmpty(ListView listView) {
-        if (listView == null) {
-            return false;
-        }
-        return listView.getCount() == 0;
+    /**
+     * Checks if the content is empty.
+     * @param listView to check.
+     * @return true if the content is empty.
+     */
+    public static boolean isEmpty(ListView listView) {
+        return listView != null && listView.getCount() == 0;
     }
 }

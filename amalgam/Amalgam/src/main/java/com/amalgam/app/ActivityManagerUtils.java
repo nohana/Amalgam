@@ -24,7 +24,7 @@ import android.content.Context;
 import java.util.List;
 
 /**
- * Utility for activity manager.
+ * Utility for {@link android.app.ActivityManager}.
  * @author KeithYokoma
  */
 @SuppressWarnings("unused") // public APIs
@@ -32,26 +32,28 @@ public final class ActivityManagerUtils {
     /**
      * Do NOT instantiate this class.
      */
-    private ActivityManagerUtils() {}
+    private ActivityManagerUtils() {
+        throw new AssertionError();
+    }
 
     /**
      * Checks if the specified service is currently running or not.
-     * @param context
-     * @param service
-     * @return
+     * @param context the context.
+     * @param service the {@link java.lang.Class} of the service.
+     * @return true if the service is running, false otherwise.
      */
-    public static final boolean isServiceRunning(Context context, Class<? extends Service> service) {
+    public static boolean isServiceRunning(Context context, Class<? extends Service> service) {
         return isServiceRunning(context, service, Integer.MAX_VALUE);
     }
 
     /**
      * Checks if the specified service is currently running or not.
-     * @param context
-     * @param service
-     * @param maxCheckCount
-     * @return
+     * @param context the context.
+     * @param service the {@link java.lang.Class} of the service.
+     * @param maxCheckCount maximum value of the running service count for this check.
+     * @return true if the service is running, false otherwise.
      */
-    public static final boolean isServiceRunning(Context context, Class<? extends Service> service, int maxCheckCount) {
+    public static boolean isServiceRunning(Context context, Class<? extends Service> service, int maxCheckCount) {
         if (context == null || service == null) {
             return false;
         }
@@ -68,11 +70,11 @@ public final class ActivityManagerUtils {
 
     /**
      * Get package name of the process id.
-     * @param context
-     * @param pid
-     * @return
+     * @param context the context.
+     * @param pid the process id.
+     * @return the package name for the process id. {@code null} if no process found.
      */
-    public static final String getPackageNameFromPid(Context context, int pid) {
+    public static String getPackageNameFromPid(Context context, int pid) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<RunningAppProcessInfo> processes = am.getRunningAppProcesses();
         for (RunningAppProcessInfo info : processes) {

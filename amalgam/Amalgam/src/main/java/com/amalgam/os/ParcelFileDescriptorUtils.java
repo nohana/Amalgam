@@ -5,13 +5,23 @@ import android.util.Log;
 
 import java.io.IOException;
 
+/**
+ * Utility for the {@link android.os.ParcelFileDescriptor}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class ParcelFileDescriptorUtils {
     public static final String TAG = ParcelFileDescriptorUtils.class.getSimpleName();
 
-    private ParcelFileDescriptorUtils() {}
+    private ParcelFileDescriptorUtils() {
+        throw new AssertionError();
+    }
 
-    public static final void close(ParcelFileDescriptor descriptor) {
+    /**
+     * Close {@link android.os.ParcelFileDescriptor} with null checks.
+     * Any exception during close is just logged.
+     * @param descriptor to close.
+     */
+    public static void close(ParcelFileDescriptor descriptor) {
         if (descriptor == null) {
             return;
         }
