@@ -124,4 +124,18 @@ public final class ViewUtils {
         int current = view.getVisibility();
         view.setVisibility(current == View.VISIBLE ? hidingPolicy : View.VISIBLE);
     }
+
+    /**
+     * Find the specific view from the view as traversal root.
+     * Returning value type is bound to your variable type.
+     *
+     * @param view the root view to find the view.
+     * @param id the view id.
+     * @param <V> the view class type parameter.
+     * @return the view, null if not found.
+     */
+    @SuppressWarnings("unchecked") // we know that return value type is a child of view, and V is bound to a child of view.
+    public static <V extends View> V findViewById(View view, int id) {
+        return (V) view.findViewById(id);
+    }
 }
