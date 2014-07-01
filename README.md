@@ -8,7 +8,7 @@ Grab via Gradle from Maven Central
 
 ```groovy
 dependencies {
-    compile 'jp.co.nohana:Amalgam:0.3.2'
+    compile 'jp.co.nohana:Amalgam:0.3.2@aar'
 }
 ```
 
