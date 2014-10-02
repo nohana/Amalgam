@@ -1,20 +1,8 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
-    }
-}
-apply plugin: 'android-library'
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19"
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
         minSdkVersion 7
@@ -23,26 +11,13 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:19.0.+'
-    compile 'com.android.support:gridlayout-v7:18.0.0'
-    compile 'com.android.support:support-v4:19.0.+'
-}
-
-
-android.libraryVariants.all { variant ->
-    def name = variant.buildType.name
-
-    // Only attach a jar for non-debug build types.
-    if (!name.equals(com.android.builder.BuilderConstants.DEBUG)) {
-        def task = project.tasks.create "jar${name.capitalize()}", Jar
-        task.dependsOn variant.javaCompile
-        task.from variant.javaCompile.destinationDir
-        artifacts.add('archives', task);
-    }
+    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.android.support:gridlayout-v7:20.0.0'
+    compile 'com.android.support:support-v4:20.0.0'
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
 
 afterEvaluate {
-    androidJavadocs.classpath += files(android.plugin.runtimeJarList)
+    androidJavadocs.classpath += project.android.libraryVariants.toList().first().javaCompile.classpath
 }

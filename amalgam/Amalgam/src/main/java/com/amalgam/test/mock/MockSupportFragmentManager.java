@@ -123,6 +123,11 @@ public class MockSupportFragmentManager extends FragmentManager {
     }
 
     @Override
+    public boolean isDestroyed() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public List<Fragment> getFragments() {
         throw new UnsupportedOperationException();
     }
