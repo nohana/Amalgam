@@ -15,11 +15,14 @@
  */
 package com.amalgam.app;
 
+import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Service;
 import android.content.Context;
+import android.os.Build;
+import android.text.TextUtils;
 
 import java.util.List;
 
@@ -66,6 +69,30 @@ public final class ActivityManagerUtils {
             }
         }
         return false;
+    }
+
+    public static boolean isApplicationRunning(Context context, String packageName) {
+        return isApplicationRunning(context, packageName, Integer.MAX_VALUE);
+    }
+
+    public static boolean isApplicationRunning(Context context, String packageName, int maxCheckCount) {
+        if (TextUtils.isEmpty(packageName)) {
+            return false;
+        }
+
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> list = manager.getRunningTasks(maxCheckCount);
+        for (ActivityManager.RunningTaskInfo info : list) {
+            if (packageName.equals(info.baseActivity.getPackageName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void moveTaskToFront(ActivityManager manager, ActivityManager.RunningTaskInfo info) {
+        manager.moveTaskToFront(info.id, 0x10000000);
     }
 
     /**
