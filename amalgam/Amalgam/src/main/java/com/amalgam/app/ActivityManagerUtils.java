@@ -15,11 +15,14 @@
  */
 package com.amalgam.app;
 
+import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Service;
 import android.content.Context;
+import android.os.Build;
+import android.text.TextUtils;
 
 import java.util.List;
 
@@ -32,7 +35,9 @@ public final class ActivityManagerUtils {
     /**
      * Do NOT instantiate this class.
      */
-    private ActivityManagerUtils() {}
+    private ActivityManagerUtils() {
+        throw new AssertionError();
+    }
 
     /**
      * Checks if the specified service is currently running or not.
@@ -40,7 +45,7 @@ public final class ActivityManagerUtils {
      * @param service
      * @return
      */
-    public static final boolean isServiceRunning(Context context, Class<? extends Service> service) {
+    public static boolean isServiceRunning(Context context, Class<? extends Service> service) {
         return isServiceRunning(context, service, Integer.MAX_VALUE);
     }
 
@@ -51,7 +56,7 @@ public final class ActivityManagerUtils {
      * @param maxCheckCount
      * @return
      */
-    public static final boolean isServiceRunning(Context context, Class<? extends Service> service, int maxCheckCount) {
+    public static boolean isServiceRunning(Context context, Class<? extends Service> service, int maxCheckCount) {
         if (context == null || service == null) {
             return false;
         }
@@ -66,13 +71,37 @@ public final class ActivityManagerUtils {
         return false;
     }
 
+    public static boolean isApplicationRunning(Context context, String packageName) {
+        return isApplicationRunning(context, packageName, Integer.MAX_VALUE);
+    }
+
+    public static boolean isApplicationRunning(Context context, String packageName, int maxCheckCount) {
+        if (TextUtils.isEmpty(packageName)) {
+            return false;
+        }
+
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> list = manager.getRunningTasks(maxCheckCount);
+        for (ActivityManager.RunningTaskInfo info : list) {
+            if (packageName.equals(info.baseActivity.getPackageName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public static void moveTaskToFront(ActivityManager manager, ActivityManager.RunningTaskInfo info) {
+        manager.moveTaskToFront(info.id, 0x10000000);
+    }
+
     /**
      * Get package name of the process id.
      * @param context
      * @param pid
      * @return
      */
-    public static final String getPackageNameFromPid(Context context, int pid) {
+    public static String getPackageNameFromPid(Context context, int pid) {
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<RunningAppProcessInfo> processes = am.getRunningAppProcesses();
         for (RunningAppProcessInfo info : processes) {
