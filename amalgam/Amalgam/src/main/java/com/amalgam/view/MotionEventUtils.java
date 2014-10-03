@@ -19,7 +19,7 @@ import android.view.MotionEvent;
 
 /**
  * Utility for the motion event treatment.
- * @author keishin.yokomaku
+ * @author KeithYokoma
  */
 @SuppressWarnings("unused") // public APIs
 public final class MotionEventUtils {
@@ -28,46 +28,48 @@ public final class MotionEventUtils {
     /**
      * This is the utility class so do NOT instantiate.
      */
-    private MotionEventUtils() {}
+    private MotionEventUtils() {
+        throw new AssertionError();
+    }
 
     /**
-     *
-     * @param e1
-     * @param e2
-     * @return
+     * Calculate the horizontal move motion direction.
+     * @param e1 start point of the motion.
+     * @param e2 end point of the motion.
+     * @return the motion direction for the horizontal axis.
      */
-    public static final MotionDirection getHorizontalMotionDirection(MotionEvent e1, MotionEvent e2) {
+    public static MotionDirection getHorizontalMotionDirection(MotionEvent e1, MotionEvent e2) {
         return getHorizontalMotionDirection(e1, e2, DEFAULT_THRESHOLD);
     }
 
     /**
-     *
-     * @param e1
-     * @param e2
-     * @param threshold
+     * Calculate the horizontal move motion direction.
+     * @param e1 start point of the motion.
+     * @param e2 end point of the motion.
+     * @param threshold threshold to detect the motion.
      * @return the motion direction for the horizontal axis.
      */
-    public static final MotionDirection getHorizontalMotionDirection(MotionEvent e1, MotionEvent e2, float threshold) {
+    public static MotionDirection getHorizontalMotionDirection(MotionEvent e1, MotionEvent e2, float threshold) {
         float delta = getHorizontalMotionRawDelta(e1, e2);
         return getHorizontalMotionDirection(delta, threshold);
     }
 
     /**
-     *
-     * @param delta
-     * @return
+     * Calculate the horizontal move motion direction.
+     * @param delta moved delta.
+     * @return the motion direction for the horizontal axis.
      */
-    public static final MotionDirection getHorizontalMotionDirection(float delta) {
+    public static MotionDirection getHorizontalMotionDirection(float delta) {
         return getHorizontalMotionDirection(delta, DEFAULT_THRESHOLD);
     }
 
     /**
-     *
-     * @param delta
-     * @param threshold
-     * @return
+     * Calculate the horizontal move motion direction.
+     * @param delta moved delta.
+     * @param threshold threshold to detect the motion.
+     * @return the motion direction for the horizontal axis.
      */
-    public static final MotionDirection getHorizontalMotionDirection(float delta, float threshold) {
+    public static MotionDirection getHorizontalMotionDirection(float delta, float threshold) {
         if (threshold < 0) {
             throw new IllegalArgumentException("threshold should be positive or zero.");
         }
@@ -75,43 +77,43 @@ public final class MotionEventUtils {
     }
 
     /**
-     *
-     * @param e1
-     * @param e2
-     * @return
+     * Calculate the vertical move motion direction.
+     * @param e1 start point of the motion.
+     * @param e2 end point of the motion.
+     * @return the motion direction for the vertical axis.
      */
-    public static final MotionDirection getVerticalMotionDirection(MotionEvent e1, MotionEvent e2) {
+    public static MotionDirection getVerticalMotionDirection(MotionEvent e1, MotionEvent e2) {
         return getVerticalMotionDirection(e1, e2, DEFAULT_THRESHOLD);
     }
 
     /**
-     *
-     * @param e1
-     * @param e2
-     * @param threshold
+     * Calculate the vertical move motion direction.
+     * @param e1 start point of the motion.
+     * @param e2 end point of the motion.
+     * @param threshold threshold to detect the motion.
      * @return the motion direction for the vertical axis.
      */
-    public static final MotionDirection getVerticalMotionDirection(MotionEvent e1, MotionEvent e2, float threshold) {
+    public static MotionDirection getVerticalMotionDirection(MotionEvent e1, MotionEvent e2, float threshold) {
         float delta = getVerticalMotionRawDelta(e1, e2);
         return getVerticalMotionDirection(delta, threshold);
     }
 
     /**
-     *
-     * @param delta
-     * @return
+     * Calculate the vertical move motion direction.
+     * @param delta moved delta.
+     * @return the motion direction for the vertical axis.
      */
-    public static final MotionDirection getVerticalMotionDirection(float delta) {
+    public static MotionDirection getVerticalMotionDirection(float delta) {
         return getVerticalMotionDirection(delta, DEFAULT_THRESHOLD);
     }
 
     /**
-     *
-     * @param delta
-     * @param threshold
-     * @return
+     * Calculate the vertical move motion direction.
+     * @param delta moved delta.
+     * @param threshold threshold to detect the motion.
+     * @return the motion direction for the vertical axis.
      */
-    public static final MotionDirection getVerticalMotionDirection(float delta, float threshold) {
+    public static MotionDirection getVerticalMotionDirection(float delta, float threshold) {
         if (threshold < 0) {
             throw new IllegalArgumentException("threshold should be positive or zero.");
         }
@@ -119,30 +121,49 @@ public final class MotionEventUtils {
     }
 
     /**
-     *
-     * @param e1
-     * @param e2
-     * @return
+     * Calculate the move motion delta by raw position.
+     * @param e1 start point of the motion.
+     * @param e2 end point of the motion.
+     * @return the move motion delta of the horizontal axis.
      */
-    public static final float getHorizontalMotionRawDelta(MotionEvent e1, MotionEvent e2) {
+    public static float getHorizontalMotionRawDelta(MotionEvent e1, MotionEvent e2) {
         return e2.getRawX() - e1.getRawX();
     }
 
     /**
-     *
-     * @param e1
-     * @param e2
-     * @return
+     * Calculate the move motion delta by raw position.
+     * @param e1 start point of the motion.
+     * @param e2 end point of the motion.
+     * @return the move motion delta of the vertical axis..
      */
-    public static final float getVerticalMotionRawDelta(MotionEvent e1, MotionEvent e2) {
+    public static float getVerticalMotionRawDelta(MotionEvent e1, MotionEvent e2) {
         return e2.getRawY() - e1.getRawY();
     }
 
     /**
      * Enumeration of the motion direction.
-     * @author keishin.yokomaku
+     * @author KeithYokoma
      */
     public static enum MotionDirection {
-        RIGHT, LEFT, UP, DOWN, FIX;
+        /**
+         * Moved to Right.
+         */
+        RIGHT,
+        /**
+         * Moved to Left.
+         */
+        LEFT,
+        /**
+         * Moved to up.
+         */
+        UP,
+        /**
+         * Moved to down.
+         */
+        DOWN,
+        /**
+         * No movement.
+         */
+        FIX
     }
 }

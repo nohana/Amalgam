@@ -19,15 +19,23 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ * Utility for the {@link java.security.MessageDigest}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class MessageDigestUtils {
     public static final String TAG = MessageDigestUtils.class.getSimpleName();
     public static final String ALGORITHM_SHA_256 = "SHA-256";
 
-    private MessageDigestUtils() {}
+    private MessageDigestUtils() {
+        throw new AssertionError();
+    }
 
-    public static final byte[] computeSha256(final byte[] data) {
+    /**
+     * Calculate the message digest value with SHA 256 algorithm.
+     * @param data to calculate.
+     * @return message digest value.
+     */
+    public static byte[] computeSha256(final byte[] data) {
         try {
             return MessageDigest.getInstance(ALGORITHM_SHA_256).digest(data);
         } catch (NoSuchAlgorithmException e) {

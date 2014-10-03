@@ -18,16 +18,27 @@ package com.amalgam.provider;
 import android.net.Uri;
 import android.provider.ContactsContract;
 
+/**
+ * Utility for the {@link android.provider.ContactsContract}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class ContactsContractUtils {
-    private ContactsContractUtils() {}
+    private ContactsContractUtils() {
+        throw new AssertionError();
+    }
 
     public static final class ContactsUtils {
-        private ContactsUtils() {}
+        private ContactsUtils() {
+            throw new AssertionError();
+        }
 
-        public static final Uri buildContactUri(long contactId) {
-            Uri uri = ContactsContract.Contacts.CONTENT_URI.buildUpon().appendPath(Long.toString(contactId)).build();
-            return uri;
+        /**
+         * Build a contact uri with the id.
+         * @param contactId the id.
+         * @return the full qualified contacts content uri.
+         */
+        public static Uri buildContactUri(long contactId) {
+            return ContactsContract.Contacts.CONTENT_URI.buildUpon().appendPath(Long.toString(contactId)).build();
         }
     }
 }

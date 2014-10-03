@@ -22,6 +22,7 @@ import android.database.ContentObserver;
 import android.net.Uri;
 
 /**
+ * Utility for the {@link android.content.ContentProvider}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class ContentProviderUtils {
@@ -29,19 +30,41 @@ public final class ContentProviderUtils {
     private static final String SINGULAR_MIME_TYPE = "vnd.android.cursor.item";
     private ContentProviderUtils() {}
 
-    public static final String buildPluralMimeType(String subType) {
+    /**
+     * Build a custom mime type of your data, such as "vnd.android.cursor.dir/subtype".
+     * @param subType the sub type.
+     * @return the plural mime type.
+     */
+    public static String buildPluralMimeType(String subType) {
         return PLURAL_MIME_TYPE + "/" + subType;
     }
 
-    public static final String buildSingularMimeType(String subType) {
+    /**
+     * Build a custom mime type of your data, such as "vnd.android.cursor.item/subtype".
+     * @param subType the sub type.
+     * @return the singular mime type.
+     */
+    public static String buildSingularMimeType(String subType) {
         return SINGULAR_MIME_TYPE + "/" + subType;
     }
 
-    public static final void notifyChange(ContentProvider provider, Uri uri, ContentObserver observer) {
+    /**
+     * Notify data-set change to the observer.
+     * @param provider the provider, must not be null.
+     * @param uri the changed uri.
+     * @param observer the observer, can be null.
+     */
+    public static void notifyChange(ContentProvider provider, Uri uri, ContentObserver observer) {
         notifyChange(provider.getContext(), uri, observer);
     }
 
-    public static final void notifyChange(Context context, Uri uri, ContentObserver observer) {
+    /**
+     * Notify data-set change to the observer.
+     * @param context the context, must not be null.
+     * @param uri the changed uri.
+     * @param observer the observer, can be null.
+     */
+    public static void notifyChange(Context context, Uri uri, ContentObserver observer) {
         ContentResolver resolver = context.getContentResolver();
         resolver.notifyChange(uri, observer);
     }

@@ -19,6 +19,13 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Skeleton class of immutable map.
+ * Just wraps the actual map class and all non-destructive method call is delegated to the wrapped object,
+ * and all destructive method call throws {@link java.lang.UnsupportedOperationException}.
+ * @param <K>
+ * @param <V>
+ */
 public abstract class AbstractImmutableMap<K, V> implements Map<K, V> {
     private Map<K, V> mMap;
 

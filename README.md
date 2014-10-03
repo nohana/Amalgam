@@ -4,17 +4,11 @@ Common re-usable module repository for the convenience of Android application de
 
 ## Download
 
-Grab via Gradle
+Grab via Gradle from Maven Central
 
 ```groovy
-repositories {
-    mavenCentral()
-    maven { url 'https://raw.github.com/nohana/Amalgam/master/amalgam/repository/' }
-}
-android {
-    dependencies {
-        compile 'com.amalgam:Amalgam:0.2.1'
-    }
+dependencies {
+    compile 'jp.co.nohana:Amalgam:0.3.2@aar'
 }
 ```
 

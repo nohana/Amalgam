@@ -6,14 +6,21 @@ import android.util.Log;
 import java.io.IOException;
 
 /**
+ * Utility for the {@link android.content.res.AssetFileDescriptor}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class AssetFileDescriptorUtils {
     public static final String TAG = AssetFileDescriptorUtils.class.getSimpleName();
 
-    private AssetFileDescriptorUtils() {}
+    private AssetFileDescriptorUtils() {
+        throw new AssertionError();
+    }
 
-    public static final void close(AssetFileDescriptor descriptor) {
+    /**
+     * Close the descriptor, and if the exception during close will be logged.
+     * @param descriptor to close.
+     */
+    public static void close(AssetFileDescriptor descriptor) {
         if (descriptor == null) {
             return;
         }

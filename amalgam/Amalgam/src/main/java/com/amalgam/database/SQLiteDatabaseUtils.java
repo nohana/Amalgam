@@ -18,19 +18,30 @@ package com.amalgam.database;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
+ * Utility for the {@link android.database.sqlite.SQLiteDatabase}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class SQLiteDatabaseUtils {
-    private  SQLiteDatabaseUtils() {}
+    private  SQLiteDatabaseUtils() {
+        throw new AssertionError();
+    }
 
-    public static final void close(SQLiteDatabase db) {
+    /**
+     * Close with null checks.
+     * @param db to close.
+     */
+    public static void close(SQLiteDatabase db) {
         if (db == null) {
             return;
         }
         db.close();
     }
 
-    public static final void endTransaction(SQLiteDatabase db) {
+    /**
+     * Ensure to finish transaction with null checks.
+     * @param db to finish transaction.
+     */
+    public static void endTransaction(SQLiteDatabase db) {
         if (db == null) {
             return;
         }

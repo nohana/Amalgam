@@ -22,36 +22,59 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 /**
- * Utility for application object.
+ * Utility for {@link android.app.Application}.
  */
 @SuppressWarnings("unused") // public APIs
 public final class ApplicationUtils {
     private static final String[] INTERNAL_PATH = new String[] { "/data", "/system" };
 
-    private ApplicationUtils() {}
+    private ApplicationUtils() {
+        throw new AssertionError();
+    }
 
-    public static final Application getApplication(Context context) {
+    /**
+     * Get the {@link android.app.Application} of the {@link android.content.Context}.
+     * @param context the context.
+     * @return the {@link android.app.Application}.
+     */
+    public static Application getApplication(Context context) {
         return (Application) context.getApplicationContext();
     }
 
-    public static final boolean isDebuggable(Context context) {
+    /**
+     * Checks if the {@link android.app.Application} is debuggable or not.
+     * @param context the context.
+     * @return true if debuggable, false otherwise.
+     */
+    public static boolean isDebuggable(Context context) {
         return isDebuggable((Application) context.getApplicationContext());
     }
+
     /**
      * Checks if the application is running as debug mode or not.
      * @param app the application to check
      * @return true if debuggable, false otherwise.
      */
-    public static final boolean isDebuggable(Application app) {
+    public static boolean isDebuggable(Application app) {
         ApplicationInfo info = app.getApplicationInfo();
         return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
     }
 
+    /**
+     * Checks if the application is installed on external storage, in most case on the SD card.
+     * @param context the context.
+     * @return true if the application is installed on external storage, false otherwise.
+     */
     public static boolean isInstalledOnSDCard(Context context) {
-        return isInstalledOnSDCard((Application) context.getApplicationContext());
+        return isInstalledOnSDCard(getApplication(context));
     }
 
-    public static final boolean isInstalledOnSDCard(Application app) {
+    /**
+     * Checks if the application is installed on external storage, in most case on the SD card.
+     * @param app the application to check.
+     * @return true if the application is installed on external storage, false otherwise.
+     */
+    public static boolean isInstalledOnSDCard(Application app) {
         try {
             String packageName = app.getPackageName();
             PackageInfo info = app.getPackageManager().getPackageInfo(packageName, 0);
