@@ -27,4 +27,13 @@ public final class PaintUtils {
         paint.setAntiAlias(true);
         return paint;
     }
+
+    public static Paint createFillAndStrokePaint(int color, int strokeWidth) {
+        Paint paint = new Paint();
+        paint.setColor(color);
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setStrokeWidth(strokeWidth);
+        paint.setAntiAlias(true);
+        return paint;
+    }
 }
