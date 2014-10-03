@@ -20,6 +20,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
@@ -114,5 +115,17 @@ public final class ActivityManagerUtils {
             }
         }
         return null;
+    }
+
+    public static ComponentName getCurrentActivity(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+
+        // get the info from the currently running task
+        List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+        if (taskInfo == null || taskInfo.size() <= 0) {
+            return null;
+        }
+
+        return taskInfo.get(0).topActivity;
     }
 }
