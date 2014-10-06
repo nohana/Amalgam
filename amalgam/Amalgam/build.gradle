@@ -1,4 +1,14 @@
 apply plugin: 'com.android.library'
+apply plugin: 'robolectric'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.robolectric:robolectric-gradle-plugin:0.12.+'
+    }
+}
 
 android {
     compileSdkVersion 19
@@ -14,6 +24,19 @@ dependencies {
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile 'com.android.support:gridlayout-v7:20.0.0'
     compile 'com.android.support:support-v4:20.0.0'
+
+    // for test-libs
+    androidTestCompile 'junit:junit:4.11'
+    androidTestCompile('org.robolectric:robolectric:2.3+') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    androidTestCompile ('com.squareup:fest-android:1.0.8+'){
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+}
+
+robolectric {
+    maxHeapSize = "2048m"
 }
 
 apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
