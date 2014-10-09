@@ -86,7 +86,7 @@ public abstract class AbstractImmutableSet<E> implements Set<E> {
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        return mSet.contains(collection);
+        return mSet.containsAll(collection);
     }
 
     /**
