@@ -20,8 +20,8 @@ import com.amalgam.os.exception.CalledFromWrongThreadException;
 import android.os.Looper;
 
 /**
- *
- * @author keishin.yokomaku
+ * Utility for the {@link java.lang.Thread}.
+ * @author KeithYokoma
  */
 @SuppressWarnings("unused") // public APIs
 public final class ThreadUtils {

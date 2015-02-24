@@ -19,6 +19,7 @@ import com.amalgam.os.BundleUtils;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
@@ -35,8 +36,29 @@ public final class SupportProgressDialogFragment extends DialogFragment {
     /**
      * Do not call the constructor directory, use {@link com.amalgam.app.SupportProgressDialogFragment#newInstance(String, String, boolean)} instead.
      */
-    public SupportProgressDialogFragment() {}
+    public SupportProgressDialogFragment() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Create a new instance of the {@link com.amalgam.app.SupportProgressDialogFragment}.
+     * @param context the context.
+     * @param title the title text resource.
+     * @param message the message text resource.
+     * @param indeterminate indeterminate progress or not.
+     * @return the instance of the {@link com.amalgam.app.SupportProgressDialogFragment}.
+     */
+    public static final SupportProgressDialogFragment newInstance(Context context, int title, int message, boolean indeterminate) {
+        return newInstance(context.getString(title), context.getString(message), indeterminate);
+    }
+
+    /**
+     * Create a new instance of the {@link com.amalgam.app.SupportProgressDialogFragment}.
+     * @param title the title text, can be null
+     * @param message the message text, must not be null.
+     * @param indeterminate indeterminate progress or not.
+     * @return the instance of the {@link com.amalgam.app.SupportProgressDialogFragment}.
+     */
     public static final SupportProgressDialogFragment newInstance(String title, String message, boolean indeterminate) {
         SupportProgressDialogFragment fragment = new SupportProgressDialogFragment();
         Bundle args = new Bundle();

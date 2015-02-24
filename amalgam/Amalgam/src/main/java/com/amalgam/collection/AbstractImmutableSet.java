@@ -19,6 +19,12 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ * Skeleton class of immutable set.
+ * Just wraps the actual map class and all non-destructive method call is delegated to the wrapped object,
+ * and all destructive method call throws {@link java.lang.UnsupportedOperationException}.
+ * @param <E>
+ */
 public abstract class AbstractImmutableSet<E> implements Set<E> {
     private final Set<E> mSet;
 
@@ -80,7 +86,7 @@ public abstract class AbstractImmutableSet<E> implements Set<E> {
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        return mSet.contains(collection);
+        return mSet.containsAll(collection);
     }
 
     /**

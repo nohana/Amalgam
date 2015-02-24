@@ -19,25 +19,35 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * Utility for the {@link android.net.ConnectivityManager}.
+ */
 @SuppressWarnings("unused") // public APIs
 public final class ConnectivityManagerUtils {
-    private ConnectivityManagerUtils() {}
+    private ConnectivityManagerUtils() {
+        throw new AssertionError();
+    }
 
+    /**
+     * Checks if the network is connected or not.
+     * @param context the context.
+     * @return true if the network is connected.
+     */
     public static boolean isNetworkConnected(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        if (info == null) {
-            return false;
-        }
-        return info.isConnected();
+        return info != null && info.isConnected();
     }
 
+    /**
+     * Checks if the network is available or not.
+     * This is not guarantee that the network is connected and can communicate through the network.
+     * @param context the context.
+     * @return true if the network is available.
+     */
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        if (info == null) {
-            return false;
-        }
-        return info.isAvailable();
+        return info != null && info.isAvailable();
     }
 }
