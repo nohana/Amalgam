@@ -17,6 +17,7 @@ package com.amalgam.test.mock;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 
 /**
@@ -128,6 +129,11 @@ public class MockSupportFragmentTransaction extends FragmentTransaction {
 
     @Override
     public FragmentTransaction setCustomAnimations(int enter, int exit, int popEnter, int popExit) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FragmentTransaction addSharedElement(View sharedElement, String name) {
         throw new UnsupportedOperationException();
     }
 

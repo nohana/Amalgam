@@ -19,6 +19,7 @@ import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Build;
+import android.view.View;
 
 /**
  * Mock implementation for {@link FragmentTransaction}.
@@ -135,6 +136,11 @@ public class MockFragmentTransaction extends FragmentTransaction {
 
     @Override
     public FragmentTransaction setTransition(int transit) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FragmentTransaction addSharedElement(View sharedElement, String name) {
         throw new UnsupportedOperationException();
     }
 
