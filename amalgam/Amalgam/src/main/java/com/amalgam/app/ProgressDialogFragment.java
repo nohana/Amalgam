@@ -15,8 +15,6 @@
  */
 package com.amalgam.app;
 
-import com.amalgam.os.BundleUtils;
-
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -25,8 +23,11 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.amalgam.os.BundleUtils;
+
 /**
  * Simple implementation of the {@link android.app.DialogFragment} that contains progress view.
+ *
  * @author KeithYokoma
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -41,14 +42,14 @@ public final class ProgressDialogFragment extends DialogFragment {
      * Do not call the constructor directory, use {@link com.amalgam.app.ProgressDialogFragment#newInstance(String, String, boolean)} instead.
      */
     public ProgressDialogFragment() {
-        throw new AssertionError();
     }
 
     /**
      * Create a new instance of the {@link com.amalgam.app.ProgressDialogFragment}.
-     * @param context the context.
-     * @param title the title text resource.
-     * @param message the message text resource.
+     *
+     * @param context       the context.
+     * @param title         the title text resource.
+     * @param message       the message text resource.
      * @param indeterminate indeterminate progress or not.
      * @return the instance of the {@link com.amalgam.app.ProgressDialogFragment}.
      */
@@ -58,8 +59,9 @@ public final class ProgressDialogFragment extends DialogFragment {
 
     /**
      * Create a new instance of the {@link com.amalgam.app.ProgressDialogFragment}.
-     * @param title the title text, can be null
-     * @param message the message text, must not be null.
+     *
+     * @param title         the title text, can be null
+     * @param message       the message text, must not be null.
      * @param indeterminate indeterminate progress or not.
      * @return the instance of the {@link com.amalgam.app.ProgressDialogFragment}.
      */
