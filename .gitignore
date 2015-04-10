@@ -2,6 +2,9 @@
 *.apk
 *.ap_
 
+# ignore crashlytics config
+com_crashlytics_export_strings.xml
+
 # Dalvik files
 *.dex
 
@@ -13,6 +16,7 @@ bin/
 gen/
 lint.xml
 proguard/
+build/
 
 # Local configs
 local.properties
@@ -23,7 +27,6 @@ tmp/
 # Eclipse workspace
 .metadata/
 .checkstyle
-.settings
 
 # intelli J
 .idea
@@ -43,7 +46,7 @@ Thumbs.db
 
 # Keystore
 *.keystore
+keystore.properties
 
 # Gradle
 .gradle
-build/
