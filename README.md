@@ -1,5 +1,6 @@
 # Amalgam
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/nohana/Amalgam?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Circle CI](https://circleci.com/gh/nohana/Amalgam.svg?style=shield)](https://circleci.com/gh/nohana/Amalgam)
 
 Common re-usable module repository for the convenience of Android application development.
 
