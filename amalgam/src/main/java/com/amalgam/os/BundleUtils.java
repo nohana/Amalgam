@@ -1093,4 +1093,15 @@ public final class BundleUtils {
         }
         return bundle.keySet();
     }
+
+    /**
+     * Convenient method to save {@link java.util.ArrayList} containing {@link java.io.Serializable} items onto {@link android.os.Bundle}.
+     * Since it fails to save a list that containing not {@link java.io.Serializable} items with {@link android.os.Bundle#putSerializable(String, Serializable)} at runtime,
+     * this is useful to get an information about putting non-serializable items array list at compile time.
+     * @param bundle a bundle.
+     * @param list to be stored on the bundle.
+     */
+    public static void putSerializableArrayList(@NonNull Bundle bundle, @NonNull String key, @NonNull ArrayList<? extends Serializable> list) {
+        bundle.putSerializable(key, list);
+    }
 }
