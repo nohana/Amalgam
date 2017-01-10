@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.robolectric'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 22
+        minSdkVersion 9
+        targetSdkVersion 25
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -16,9 +16,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'com.android.support:gridlayout-v7:20.0.0'
-    compile 'com.android.support:support-v4:22.0.0'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:gridlayout-v7:25.0.1'
+    compile 'com.android.support:support-v4:25.0.1'
 
     // Robolectric
     androidTestCompile('junit:junit:4.11') {
