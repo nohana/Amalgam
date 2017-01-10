@@ -1,16 +1,15 @@
 package com.amalgam.lang;
 
+import com.amalgam.AmalgamTestRunner;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 /**
  * Created by Hideyuki.Kikuma on 2014/10/07.
  */
-@RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)
+@RunWith(AmalgamTestRunner.class)
 public class NumberUtilsTest {
     @Test
     public void testTryParseLong() {
@@ -20,11 +19,11 @@ public class NumberUtilsTest {
         Assert.assertEquals(Long.valueOf(Long.MAX_VALUE), NumberUtils.tryParseLong(String.valueOf(Long.MAX_VALUE)));
         Assert.assertEquals(Long.valueOf(Long.MIN_VALUE), NumberUtils.tryParseLong(String.valueOf(Long.MIN_VALUE)));
 
-        Assert.assertNull(NumberUtils.tryParseLong(null));
-        Assert.assertNull(NumberUtils.tryParseLong(String.valueOf("9223372036854775808")));
-        Assert.assertNull(NumberUtils.tryParseLong(String.valueOf("-9223372036854775809")));
-        Assert.assertNull(NumberUtils.tryParseLong(String.valueOf("-")));
-        Assert.assertNull(NumberUtils.tryParseLong(String.valueOf("a")));
+        Assert.assertEquals(Long.valueOf(0L), NumberUtils.tryParseLong(null));
+        Assert.assertEquals(Long.valueOf(0L), NumberUtils.tryParseLong(String.valueOf("9223372036854775808")));
+        Assert.assertEquals(Long.valueOf(0L), NumberUtils.tryParseLong(String.valueOf("-9223372036854775809")));
+        Assert.assertEquals(Long.valueOf(0L), NumberUtils.tryParseLong(String.valueOf("-")));
+        Assert.assertEquals(Long.valueOf(0L), NumberUtils.tryParseLong(String.valueOf("a")));
     }
 
     @Test
@@ -35,18 +34,18 @@ public class NumberUtilsTest {
         Assert.assertEquals(Integer.valueOf(Integer.MAX_VALUE), NumberUtils.tryParseInt(String.valueOf(Integer.MAX_VALUE)));
         Assert.assertEquals(Integer.valueOf(Integer.MIN_VALUE), NumberUtils.tryParseInt(String.valueOf(Integer.MIN_VALUE)));
 
-        Assert.assertNull(NumberUtils.tryParseInt(null));
-        Assert.assertNull(NumberUtils.tryParseInt(String.valueOf(Long.valueOf(Integer.MAX_VALUE) + 1)));
-        Assert.assertNull(NumberUtils.tryParseInt(String.valueOf(Long.valueOf(Integer.MIN_VALUE) - 1)));
-        Assert.assertNull(NumberUtils.tryParseInt(String.valueOf("-")));
-        Assert.assertNull(NumberUtils.tryParseInt(String.valueOf("a")));
+        Assert.assertEquals(Integer.valueOf(0), NumberUtils.tryParseInt(null));
+        Assert.assertEquals(Integer.valueOf(0), NumberUtils.tryParseInt(String.valueOf(Long.valueOf(Integer.MAX_VALUE) + 1)));
+        Assert.assertEquals(Integer.valueOf(0), NumberUtils.tryParseInt(String.valueOf(Long.valueOf(Integer.MIN_VALUE) - 1)));
+        Assert.assertEquals(Integer.valueOf(0), NumberUtils.tryParseInt(String.valueOf("-")));
+        Assert.assertEquals(Integer.valueOf(0), NumberUtils.tryParseInt(String.valueOf("a")));
     }
 
     @Test
     public void testTryParseFloat() throws Exception {
         Assert.assertEquals(Float.valueOf(0), NumberUtils.tryParseFloat("0"));
-        Assert.assertEquals(Float.valueOf("1.23"), NumberUtils.tryParseFloat("1.23"));
-        Assert.assertEquals(Float.valueOf("-1.23"), NumberUtils.tryParseFloat("-1.23"));
+        Assert.assertEquals(Float.valueOf("1.23f"), NumberUtils.tryParseFloat("1.23f"));
+        Assert.assertEquals(Float.valueOf("-1.23f"), NumberUtils.tryParseFloat("-1.23f"));
         Assert.assertEquals(Float.valueOf(Float.MAX_VALUE), NumberUtils.tryParseFloat(String.valueOf(Float.MAX_VALUE)));
         Assert.assertEquals(Float.valueOf(Float.MAX_EXPONENT), NumberUtils.tryParseFloat(String.valueOf(Float.MAX_EXPONENT)));
         Assert.assertEquals(Float.valueOf(Float.MIN_VALUE), NumberUtils.tryParseFloat(String.valueOf(Float.MIN_VALUE)));
@@ -55,10 +54,10 @@ public class NumberUtilsTest {
 
         // TODO Parameter is a result of when null
 //        Assert.assertNull(NumberUtils.tryParseFloat(null));
-        Assert.assertNull(NumberUtils.tryParseFloat(String.valueOf("3.40282346638528860f+38f")));
-        Assert.assertNull(NumberUtils.tryParseFloat(String.valueOf("1.40129846432481707f-45f")));
-        Assert.assertNull(NumberUtils.tryParseFloat(String.valueOf("-")));
-        Assert.assertNull(NumberUtils.tryParseFloat(String.valueOf("a")));
+        Assert.assertEquals(Float.valueOf(0), NumberUtils.tryParseFloat(String.valueOf("3.40282346638528860f+38f")));
+        Assert.assertEquals(Float.valueOf(0), NumberUtils.tryParseFloat(String.valueOf("1.40129846432481707f-45f")));
+        Assert.assertEquals(Float.valueOf(0), NumberUtils.tryParseFloat(String.valueOf("-")));
+        Assert.assertEquals(Float.valueOf(0), NumberUtils.tryParseFloat(String.valueOf("a")));
     }
 
     @Test
@@ -74,10 +73,10 @@ public class NumberUtilsTest {
 
         // TODO Parameter is a result of when null
 //        Assert.assertNull(NumberUtils.tryParseDouble(null));
-        Assert.assertNull(NumberUtils.tryParseDouble(String.valueOf("3.40282346638528860f+38f")));
-        Assert.assertNull(NumberUtils.tryParseDouble(String.valueOf("1.40129846432481707f-45f")));
-        Assert.assertNull(NumberUtils.tryParseDouble(String.valueOf("-")));
-        Assert.assertNull(NumberUtils.tryParseDouble(String.valueOf("a")));
+        Assert.assertEquals(Double.valueOf(0), NumberUtils.tryParseDouble(String.valueOf("3.40282346638528860f+38f")));
+        Assert.assertEquals(Double.valueOf(0), NumberUtils.tryParseDouble(String.valueOf("1.40129846432481707f-45f")));
+        Assert.assertEquals(Double.valueOf(0), NumberUtils.tryParseDouble(String.valueOf("-")));
+        Assert.assertEquals(Double.valueOf(0), NumberUtils.tryParseDouble(String.valueOf("a")));
     }
 
     @Test
