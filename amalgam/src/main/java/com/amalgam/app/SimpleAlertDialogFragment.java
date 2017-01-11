@@ -15,16 +15,16 @@
  */
 package com.amalgam.app;
 
-import com.amalgam.R;
-import com.amalgam.os.BundleUtils;
-
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+
+import com.amalgam.R;
+import com.amalgam.os.BundleUtils;
 
 /**
  * Simple implementation of alert dialog.
@@ -74,7 +74,7 @@ public class SimpleAlertDialogFragment extends DialogFragment {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(title)
                 .setMessage(message)
-                .setNeutralButton(R.string.dialog_button_ok, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.dialog_button_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
