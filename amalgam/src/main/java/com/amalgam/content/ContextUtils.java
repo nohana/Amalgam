@@ -293,6 +293,7 @@ public class ContextUtils {
      * @return the {@link android.bluetooth.BluetoothAdapter}
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+    @SuppressWarnings("ServiceCast")
     public static BluetoothAdapter getBluetoothAdapter(Context context) {
         return (BluetoothAdapter) context.getSystemService(Context.BLUETOOTH_SERVICE);
     }
