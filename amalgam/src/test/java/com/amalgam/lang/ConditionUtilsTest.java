@@ -1,16 +1,15 @@
 package com.amalgam.lang;
 
+import com.amalgam.AmalgamTestRunner;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 /**
  * Created by Hideyuki.Kikuma on 2014/10/06.
  */
-@RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)
+@RunWith(AmalgamTestRunner.class)
 public class ConditionUtilsTest {
     @Test
     public void testCheckAllNotNull() {

@@ -1,11 +1,11 @@
 package com.amalgam.collection;
 
+import com.amalgam.AmalgamTestRunner;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -13,8 +13,7 @@ import java.util.Set;
 /**
  * Created by Hideyuki.Kikuma on 2014/10/10.
  */
-@RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)
+@RunWith(AmalgamTestRunner.class)
 public class ImmutableHashMapTest {
 
     private static final String KEY = "foo";

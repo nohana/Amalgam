@@ -49,6 +49,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#addAccount(String, String, String[], android.os.Bundle, android.app.Activity, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Bundle> addAccount(String accountType, String authTokenType, String[] requiredFeatures, Bundle addAccountOptions, Activity activity, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.addAccount(accountType, authTokenType, requiredFeatures, addAccountOptions, activity, callback, handler);
     }
@@ -56,6 +57,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#addAccountExplicitly(android.accounts.Account, String, android.os.Bundle).
      */
+    @SuppressWarnings("MissingPermission")
     public boolean addAccountExplicitly(Account account, String password, Bundle userdata) {
         return mAccount.addAccountExplicitly(account, password, userdata);
     }
@@ -63,6 +65,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#addOnAccountsUpdatedListener(android.accounts.OnAccountsUpdateListener, android.os.Handler, boolean).
      */
+    @SuppressWarnings("MissingPermission")
     public void addOnAccountsUpdatedListener(OnAccountsUpdateListener listener, Handler handler, boolean updateImmediately) {
         mAccount.addOnAccountsUpdatedListener(listener, handler, updateImmediately);
     }
@@ -70,6 +73,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#blockingGetAuthToken(android.accounts.Account, String, boolean).
      */
+    @SuppressWarnings("MissingPermission")
     public String blockingGetAuthToken(Account account, String authTokenType, boolean notifyAuthFailure) throws OperationCanceledException, IOException, AuthenticatorException {
         return mAccount.blockingGetAuthToken(account, authTokenType, notifyAuthFailure);
     }
@@ -77,6 +81,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#clearPassword(android.accounts.Account).
      */
+    @SuppressWarnings("MissingPermission")
     public void clearPassword(Account account) {
         mAccount.clearPassword(account);
     }
@@ -84,6 +89,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#confirmCredentials(android.accounts.Account, android.os.Bundle, android.app.Activity, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Bundle> confirmCredentials(Account account, Bundle options, Activity activity, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.confirmCredentials(account, options, activity, callback, handler);
     }
@@ -91,6 +97,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#editProperties(String, android.app.Activity, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Bundle> editProperties(String accountType, Activity activity, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.editProperties(accountType, activity, callback, handler);
     }
@@ -105,6 +112,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAccounts().
      */
+    @SuppressWarnings("MissingPermission")
     public Account[] getAccounts() {
         return mAccount.getAccounts();
     }
@@ -112,6 +120,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAccountsByType(String).
      */
+    @SuppressWarnings("MissingPermission")
     public Account[] getAccountsByType(String type) {
         return mAccount.getAccountsByType(type);
     }
@@ -119,6 +128,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAccountsByTypeAndFeatures(String, String[], android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Account[]> getAccountsByTypeAndFeatures(String type, String[] features, AccountManagerCallback<Account[]> callback, Handler handler) {
         return mAccount.getAccountsByTypeAndFeatures(type, features, callback, handler);
     }
@@ -134,7 +144,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAuthToken(android.accounts.Account, String, boolean, android.accounts.AccountManagerCallback, android.os.Handler).
      */
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "MissingPermission"})
     @Deprecated
     public AccountManagerFuture<Bundle> getAuthToken(Account account, String authTokenType, boolean notifyAuthFailure, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.getAuthToken(account, authTokenType, notifyAuthFailure, callback, handler);
@@ -143,6 +153,8 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAuthToken(android.accounts.Account, String, android.os.Bundle, android.app.Activity, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
+
     public AccountManagerFuture<Bundle> getAuthToken(Account account, String authTokenType, Bundle options, Activity activity, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.getAuthToken(account, authTokenType, options, activity, callback, handler);
     }
@@ -150,6 +162,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAuthToken(android.accounts.Account, String, android.os.Bundle, boolean, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public AccountManagerFuture<Bundle> getAuthToken(Account account, String authTokenType, Bundle options, boolean notifyAuthFailure, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.getAuthToken(account, authTokenType, options, notifyAuthFailure, callback, handler);
@@ -158,6 +171,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getAuthTokenByFeatures(String, String, String[], android.app.Activity, android.os.Bundle, android.os.Bundle, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Bundle> getAuthTokenByFeatures(String accountType, String authTokenType, String[] features, Activity activity, Bundle addAccountOptions, Bundle getAuthTokenOptions, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.getAuthTokenByFeatures(accountType, authTokenType, features, activity, addAccountOptions, getAuthTokenOptions, callback, handler);
     }
@@ -172,6 +186,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getPassword(android.accounts.Account).
      */
+    @SuppressWarnings("MissingPermission")
     public String getPassword(Account account) {
         return mAccount.getPassword(account);
     }
@@ -179,6 +194,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#getUserData(android.accounts.Account, String).
      */
+    @SuppressWarnings("MissingPermission")
     public String getUserData(Account account, String key) {
         return mAccount.getUserData(account, key);
     }
@@ -186,6 +202,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#hasFeatures(android.accounts.Account, String[], android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     @TargetApi(Build.VERSION_CODES.FROYO)
     public AccountManagerFuture<Boolean> hasFeatures(Account account, String[] features, AccountManagerCallback<Boolean> callback, Handler handler) {
         return mAccount.hasFeatures(account, features, callback, handler);
@@ -201,6 +218,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#invalidateAuthToken(String, String).
      */
+    @SuppressWarnings("MissingPermission")
     public void invalidateAuthToken(String accountType, String authToken) {
         mAccount.invalidateAuthToken(accountType, authToken);
     }
@@ -208,6 +226,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#peekAuthToken(android.accounts.Account, String).
      */
+    @SuppressWarnings("MissingPermission")
     public String peekAuthToken(Account account, String authTokenType) {
         return mAccount.peekAuthToken(account, authTokenType);
     }
@@ -215,6 +234,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#removeAccount(android.accounts.Account, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Boolean> removeAccount(Account account, AccountManagerCallback<Boolean> callback, Handler handler) {
         return mAccount.removeAccount(account, callback, handler);
     }
@@ -229,6 +249,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#setAuthToken(android.accounts.Account, String, String).
      */
+    @SuppressWarnings("MissingPermission")
     public void setAuthToken(Account account, String authTokenType, String authToken) {
         mAccount.setAuthToken(account, authTokenType, authToken);
     }
@@ -236,6 +257,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#setPassword(android.accounts.Account, String).
      */
+    @SuppressWarnings("MissingPermission")
     public void setPassword(Account account, String password) {
         mAccount.setPassword(account, password);
     }
@@ -243,6 +265,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#setUserData(android.accounts.Account, String, String).
      */
+    @SuppressWarnings("MissingPermission")
     public void setUserData(Account account, String key, String value) {
         mAccount.setUserData(account, key, value);
     }
@@ -257,6 +280,7 @@ public class AccountManagerDelegate {
     /**
      * @see android.accounts.AccountManager#updateCredentials(android.accounts.Account, String, android.os.Bundle, android.app.Activity, android.accounts.AccountManagerCallback, android.os.Handler).
      */
+    @SuppressWarnings("MissingPermission")
     public AccountManagerFuture<Bundle> updateCredentials(Account account, String authTokenType, Bundle options, Activity activity, AccountManagerCallback<Bundle> callback, Handler handler) {
         return mAccount.updateCredentials(account, authTokenType, options, activity, callback, handler);
     }
