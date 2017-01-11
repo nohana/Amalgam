@@ -1,6 +1,6 @@
 machine:
   java:
-    version: oraclejdk7
+    version: oraclejdk8
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
 
