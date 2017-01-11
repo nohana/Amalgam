@@ -1,10 +1,10 @@
 package com.amalgam.collection;
 
+import com.amalgam.AmalgamTestRunner;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,7 @@ import java.util.List;
 /**
  * Created by Hideyuki.Kikuma on 2014/10/10.
  */
-@RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)
+@RunWith(AmalgamTestRunner.class)
 public class CollectionUtilsTest {
     @Test
     public void testToString() {

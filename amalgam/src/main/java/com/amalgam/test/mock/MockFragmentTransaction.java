@@ -65,6 +65,16 @@ public class MockFragmentTransaction extends FragmentTransaction {
     }
 
     @Override
+    public void commitNow() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void commitNowAllowingStateLoss() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public FragmentTransaction detach(Fragment fragment) {
         throw new UnsupportedOperationException();
     }
